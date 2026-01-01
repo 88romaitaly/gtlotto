@@ -77,7 +77,23 @@ body {
     overflow: hidden;
     flex-shrink: 0;
 }
+.no-result {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
 
+.no-result i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--scotland-yellow);
+    opacity: 0.5;
+}
+
+.no-result p {
+    font-size: 18px;
+    margin-top: 10px;
+}
 .flag-stripe {
     height: 33.33%;
 }
