@@ -6,23 +6,7 @@
 const albaniaLottoData = {
     // Array of results - MAX 30 ENTRIES
     results: [
-        // New entries go at the TOP
-        // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "HH:MM" }
         
-        // January 2026 - Example data (you'll replace with actual data)
-        {
-            date: "2026-01-02",
-            draw: 245,
-            numbers: [1, 8, 3, 6],
-            time: "14:00"
-        },
-        {
-            date: "2026-01-01",
-            draw: 244,
-            numbers: [5, 2, 9, 4],
-            time: "14:00"
-        },
-        // December 2025 - Example continuation
         {
             date: "2025-12-31",
             draw: 243,
