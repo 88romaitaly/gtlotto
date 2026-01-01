@@ -303,4 +303,66 @@
                         <h4 class="asmat-text">𐨒𐨩𐨯 𐨐𐨮𐨱𐨯</h4>
                         <a href="#" class="asmat-text"><i class="fas fa-book-dead"></i> 𐨒𐨩𐨯 𐨐𐨮𐨱𐨯</a>
                         <a href="#" class="asmat-text"><i class="fas fa-shield-alt"></i> 𐨒𐨩𐨯 𐨠𐨩𐨮</a>
-                       
+                        <a href="#" class="asmat-text"><i class="fas fa-question-circle"></i> 𐨒𐨩𐨯 𐨑𐨯𐨐𐨮</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="legal">
+                    <p class="asmat-text"><i class="fas fa-exclamation-triangle"></i> 𐨒𐨩𐨯 𐨐𐨮𐨱𐨯 𐨠𐨩𐨮 𐨑𐨯𐨐𐨮 𐨒𐨩𐨯 𐨐𐨮𐨱𐨯 𐨒𐨩𐨯 𐨠𐨩𐨮 18+</p>
+                    <p class="copyright asmat-text">© 2025 𐨱𐨯𐨮𐨐 𐨠𐨩𐨮𐨑. 𐨒𐨩𐨯 𐨐𐨮𐨱𐨯 𐨠𐨩𐨮 𐨑𐨯𐨐𐨮.</p>
+                </div>
+                
+                <div class="ancient-status">
+                    <div class="status-dot"></div>
+                    <span class="asmat-text">𐨒𐨩𐨯 𐨐𐨮𐨱𐨯</span>
+                    <div class="ancient-time asmat-text" id="serverTime">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>--:--:-- 𐨱𐨒𐨩</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    
+    <!-- Petroglyph Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create ancient symbols in background
+            const container = document.querySelector('.petroglyphs');
+            const symbols = ['𓀀', '𓀁', '𓀂', '𓀃', '𓀄', '𓀅', '𓀆', '𓀇'];
+            const count = 20;
+            
+            for (let i = 0; i < count; i++) {
+                const symbol = document.createElement('div');
+                symbol.className = 'petroglyph';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                // Random properties
+                const size = Math.random() * 40 + 20;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const rotation = Math.random() * 360;
+                const opacity = Math.random() * 0.3 + 0.1;
+                const duration = Math.random() * 30 + 20;
+                const delay = Math.random() * 5;
+                
+                symbol.style.fontSize = `${size}px`;
+                symbol.style.left = `${posX}%`;
+                symbol.style.top = `${posY}%`;
+                symbol.style.transform = `rotate(${rotation}deg)`;
+                symbol.style.opacity = opacity;
+                symbol.style.animationDuration = `${duration}s`;
+                symbol.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(symbol);
+            }
+        });
+    </script>
+</body>
+</html>
