@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scotland Lotto - Official Draw Results</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/scotland.png">
+</head>
+<body>
+    <!-- Background Pattern -->
+    <div class="pattern"></div>
+    
+    <div class="container">
+        <!-- Header with Scottish Theme -->
+        <header class="header">
+            <div class="header-top">
+                <div class="scottish-flag">
+                    <div class="flag-stripe blue"></div>
+                    <div class="flag-stripe white"></div>
+                    <div class="flag-stripe blue"></div>
+                    <div class="saltire"></div>
+                </div>
+                <div class="header-title">
+                    <h1>SCOTLAND LOTTO</h1>
+                    <p class="subtitle">Official Daily Draw</p>
+                </div>
+                <div class="header-time">
+                    <div class="time-box">
+                        <i class="fas fa-clock"></i>
+                        <span id="currentTime">--:--:--</span>
+                        <small>GMT</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Edinburgh, Scotland</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Daily Draw at <strong>11:30 GMT</strong></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Draw #<span id="latestDraw">230</span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Live Countdown Section -->
+        <section class="countdown-section">
+            <div class="countdown-header">
+                <h2><i class="fas fa-hourglass-half"></i> NEXT DRAW COUNTDOWN</h2>
+                <div class="status-live">
+                    <span class="live-dot"></span>
+                    LIVE
+                </div>
+            </div>
+            
+            <div class="countdown-card">
+                <div class="countdown-display">
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-hours">00</div>
+                        <div class="time-label">HOURS</div>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-minutes">00</div>
+                        <div class="time-label">MINUTES</div>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-seconds">00</div>
+                        <div class="time-label">SECONDS</div>
+                    </div>
+                </div>
+                
+                <div class="next-draw-info">
+                    <i class="fas fa-calendar-day"></i>
+                    <span>Next Draw: <strong id="nextDrawDate">-- -- ----</strong> at <strong>11:30 GMT</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Result Section -->
+        <section class="latest-section">
+            <div class="section-title">
+                <h2><i class="fas fa-star"></i> LATEST WINNING NUMBERS</h2>
+                <div class="result-meta">
+                    <span class="draw-number" id="drawNumber">Draw #230</span>
+                    <span class="draw-date" id="latestDate">31 Dec 2025</span>
+                </div>
+            </div>
+            
+            <div class="result-display">
+                <div class="result-numbers" id="latestNumbers">
+                    <!-- Numbers will be inserted here -->
+                    <div class="loading-balls">
+                        <div class="loading-ball"></div>
+                        <div class="loading-ball"></div>
+                        <div class="loading-ball"></div>
+                        <div class="loading-ball"></div>
+                    </div>
+                </div>
+                
+                <div class="result-time">
+                    <i class="fas fa-clock"></i>
+                    Drawn at <span id="drawTime">18:57 GMT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <h2><i class="fas fa-chart-line"></i> DRAW STATISTICS</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <i class="fas fa-fire"></i>
+                        <h3>HOT NUMBERS</h3>
+                    </div>
+                    <div class="hot-numbers" id="hotNumbers">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <i class="fas fa-snowflake"></i>
+                        <h3>COLD NUMBERS</h3>
+                    </div>
+                    <div class="cold-numbers" id="coldNumbers">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <i class="fas fa-history"></i>
+                        <h3>DRAW HISTORY</h3>
+                    </div>
+                    <div class="history-stats">
+                        <div class="stat-item">
+                            <span>Total Draws</span>
+                            <strong id="totalDraws">230</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>This Month</span>
+                            <strong id="monthDraws">31</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Avg. Time</span>
+                            <strong>11:30 GMT</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Results Table -->
+        <section class="recent-section">
+            <div class="section-title">
+                <h2><i class="fas fa-list-ol"></i> RECENT DRAW RESULTS</h2>
+                <div class="table-info">
+                    Showing last <span id="showCount">30</span> draws
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Draw Date</th>
+                            <th>Draw #</th>
+                            <th>Draw Time</th>
+                            <th>Winning Numbers</th>
+                            <th>Day</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTable">
+                        <!-- Results will be inserted here -->
+                        <tr class="loading-row">
+                            <td colspan="5">
+                                <div class="loading-content">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Loading draw results...
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-footer">
+                <div class="update-info">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Auto-updates after each draw at 11:30 GMT</span>
+                </div>
+                <button class="view-all" onclick="toggleViewAll()">
+                    <i class="fas fa-expand"></i>
+                    <span>VIEW ALL 30 DRAWS</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="thistle-icon">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h3>SCOTLAND LOTTO</h3>
+                        <p>Licensed and Regulated</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Information</h4>
+                        <a href="#"><i class="fas fa-file-alt"></i> Rules</a>
+                        <a href="#"><i class="fas fa-shield-alt"></i> Security</a>
+                        <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Contact</h4>
+                        <a href="#"><i class="fas fa-envelope"></i> support@scotlandlotto.com</a>
+                        <a href="#"><i class="fas fa-phone"></i> +44 131 123 4567</a>
+                        <a href="#"><i class="fas fa-map-pin"></i> Edinburgh, UK</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="legal">
+                    <p><i class="fas fa-exclamation-circle"></i> Must be 18+ to participate. Gambling can be addictive. Play responsibly.</p>
+                    <p class="copyright">© 2025 Scotland Lotto. All rights reserved. Registered in Scotland No. SC123456.</p>
+                </div>
+                
+                <div class="live-indicator">
+                    <span class="indicator-dot"></span>
+                    <span>LIVE SERVER</span>
+                    <span class="server-time" id="serverTime">--:--:-- GMT</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
