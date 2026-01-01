@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>广州彩票 - 幸运之轮</title>
-    <meta name="robots" content="noindex">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,21 +36,15 @@
             <section class="fortune-wheel-section">
                 <h2><i class="fas fa-yin-yang"></i> 幸运之轮</h2>
                 <div class="wheel-container">
-                    <div class="wheel" id="fortune-wheel">
-                        <div class="wheel-center">
-                            <div class="wheel-center-circle">
-                                <i class="fas fa-gem"></i>
-                            </div>
+                    <div class="wheel-wrapper">
+                        <div class="wheel" id="fortune-wheel">
+                            <!-- Angka akan di-generate oleh JavaScript -->
                         </div>
-                        <div class="wheel-number" style="--i:1"><span>8</span></div>
-                        <div class="wheel-number" style="--i:2"><span>3</span></div>
-                        <div class="wheel-number" style="--i:3"><span>9</span></div>
-                        <div class="wheel-number" style="--i:4"><span>1</span></div>
-                        <div class="wheel-number" style="--i:5"><span>6</span></div>
-                        <div class="wheel-number" style="--i:6"><span>4</span></div>
-                        <div class="wheel-number" style="--i:7"><span>0</span></div>
-                        <div class="wheel-number" style="--i:8"><span>7</span></div>
+                        <div class="wheel-pointer">
+                            <i class="fas fa-caret-down"></i>
+                        </div>
                     </div>
+                    
                     <div class="wheel-controls">
                         <button id="spin-button" class="spin-button">
                             <i class="fas fa-redo-alt"></i> 旋转幸运之轮
@@ -63,21 +56,26 @@
                 </div>
                 
                 <div class="result-section">
-                    <h3>您的幸运号码</h3>
-                    <div class="result-numbers" id="result-numbers">
-                        <div class="number-placeholder">?</div>
-                        <div class="number-placeholder">?</div>
-                        <div class="number-placeholder">?</div>
-                        <div class="number-placeholder">?</div>
+                    <h3>你的幸运号码</h3>
+                    <div class="result-container">
+                        <div class="result-numbers" id="result-numbers">
+                            <div class="number-placeholder">?</div>
+                            <div class="number-placeholder">?</div>
+                            <div class="number-placeholder">?</div>
+                            <div class="number-placeholder">?</div>
+                        </div>
                     </div>
-                    <p class="result-info">点击"旋转幸运之轮"按钮生成您的幸运号码</p>
+                    <p class="result-info">点击"旋转幸运之轮"按钮生成你的幸运号码</p>
                     
                     <div class="latest-draw">
                         <h4><i class="fas fa-trophy"></i> 最新开奖结果</h4>
                         <div class="latest-numbers" id="latest-numbers">
-                            <!-- Will be populated by JavaScript -->
+                            <div class="latest-number">3</div>
+                            <div class="latest-number">4</div>
+                            <div class="latest-number">7</div>
+                            <div class="latest-number">9</div>
                         </div>
-                        <p class="draw-time" id="latest-draw-time">开奖时间: --</p>
+                        <p class="draw-time" id="latest-draw-time">开奖时间: 2023-10-21 16:30</p>
                     </div>
                 </div>
             </section>
