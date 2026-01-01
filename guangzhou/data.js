@@ -2,18 +2,19 @@
 const guangzhouLottoData = {
     // 历史开奖记录 - Diperbaiki berdasarkan data aktual
     drawHistory: [
-        // Data untuk Januari 2026 (diasumsikan)
-        { date: "2026-01-01", numbers: [0, 4, 3, 9] },
+        // Data untuk Januari 2026
+        
         
         // Data historis dari Desember 2025 (berdasarkan gambar)
-        { date: "2025-12-31", numbers: [5, 4, 7, 7] },
-        { date: "2025-12-30", numbers: [3, 0, 7, 1] },
-        { date: "2025-12-29", numbers: [2, 3, 6, 4] },
-        { date: "2025-12-28", numbers: [6, 1, 1, 8] },
-        { date: "2025-12-27", numbers: [8, 2, 6, 3] },
-        { date: "2025-12-26", numbers: [9, 4, 7, 6] },
-        { date: "2025-12-25", numbers: [1, 1, 3, 8] },
-        // Tanggal 24 Desember 2025 TIDAK ADA dalam data asli
+        { date: "2025-12-31", numbers: [0, 4, 3, 9] },
+        { date: "2025-12-30", numbers: [5, 4, 7, 7] },
+        { date: "2025-12-29", numbers: [3, 0, 7, 1] },
+        { date: "2025-12-28", numbers: [2, 3, 6, 4] },
+        { date: "2025-12-27", numbers: [6, 1, 1, 8] },
+        { date: "2025-12-26", numbers: [8, 2, 6, 3] },
+        { date: "2025-12-25", numbers: [9, 4, 7, 6] },
+        { date: "2025-12-24", numbers: [1, 1, 3, 8] },
+    
         { date: "2025-12-23", numbers: [9, 0, 1, 1] },
         { date: "2025-12-22", numbers: [8, 3, 9, 6] },
         { date: "2025-12-21", numbers: [6, 9, 0, 7] },
