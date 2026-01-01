@@ -225,32 +225,31 @@ function updateCurrentTime() {
     currentTimeElement.textContent = `广州时间: ${timeString}`;
 }
 
-// 更新下次开奖时间
+// 更新下次开奖时间 - DIPERBAIKI untuk 00:30 GMT+8
 function updateNextDrawTime() {
     const now = new Date();
     const today = now.toISOString().split('T')[0];
     
-    // 开奖时间: 16:30 GMT+8 = 08:30 GMT+0
-    const drawTimeUTC = new Date(`${today}T08:30:00Z`);
+    // 开奖时间: 00:30 GMT+8 = 16:30 GMT+0 (hari sebelumnya)
+    // Tapi lebih mudah: kita hitung berdasarkan waktu Guangzhou
+    const drawTimeGuangzhou = new Date(`${today}T00:30:00+08:00`);
+    
+    // Konversi ke UTC untuk perbandingan
+    const drawTimeUTC = new Date(drawTimeGuangzhou.getTime() - (8 * 60 * 60 * 1000));
     
     // 如果当前时间已经过了今天的开奖时间，显示明天的开奖时间
     if (now > drawTimeUTC) {
-        drawTimeUTC.setDate(drawTimeUTC.getDate() + 1);
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowStr = tomorrow.toISOString().split('T')[0];
+        const tomorrowDrawTime = new Date(`${tomorrowStr}T00:30:00+08:00`);
+        const tomorrowDrawUTC = new Date(tomorrowDrawTime.getTime() - (8 * 60 * 60 * 1000));
+        
+        // Update element
+        nextDrawTimeElement.textContent = `00:30 (GMT+8) 明天`;
+    } else {
+        nextDrawTimeElement.textContent = `00:30 (GMT+8) 今天`;
     }
-    
-    // 转换为广州时间显示
-    const guangzhouDrawTime = new Date(drawTimeUTC.getTime() + 8 * 60 * 60 * 1000);
-    
-    const timeString = guangzhouDrawTime.toLocaleString('zh-CN', {
-        timeZone: 'Asia/Shanghai',
-        month: '2-digit',
-        day: '2-digit',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit'
-    }).split(' ')[1];
-    
-    nextDrawTimeElement.textContent = `16:30 (GMT+8)`;
 }
 
 // 检查开奖时间
@@ -385,15 +384,34 @@ function updateTodayResult() {
     const todayNumbersElement = document.getElementById('today-numbers');
     const resultStatusElement = document.getElementById('result-status');
     
-    const today = new Date();
-    const todayStr = today.toISOString().split('T')[0];
+    const now = new Date();
+    const guangzhouTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+    const guangzhouDateStr = guangzhouTime.toISOString().split('T')[0];
     
-    // Update tanggal
-    todayDateElement.textContent = todayStr;
+    // Untuk menentukan "hari ini" dalam konteks draw, kita perlu logika khusus:
+    // Draw terjadi pukul 00:30 GMT+8, jadi jika sekarang setelah 00:30, 
+    // maka result "hari ini" sudah ada
+    const drawHourGuangzhou = 0; // 00:30
+    const drawMinuteGuangzhou = 30;
     
-    // Cek apakah sudah ada result hari ini
+    let targetDateStr;
+    if (guangzhouTime.getHours() >= drawHourGuangzhou && 
+        guangzhouTime.getMinutes() >= drawMinuteGuangzhou) {
+        // Sudah lewat waktu draw, gunakan tanggal Guangzhou hari ini
+        targetDateStr = guangzhouDateStr;
+    } else {
+        // Belum waktu draw, gunakan tanggal kemarin
+        const yesterday = new Date(guangzhouTime);
+        yesterday.setDate(yesterday.getDate() - 1);
+        targetDateStr = yesterday.toISOString().split('T')[0];
+    }
+    
+    // Update tanggal display
+    todayDateElement.textContent = targetDateStr;
+    
+    // Cek apakah sudah ada result untuk tanggal target
     const todayResult = guangzhouLottoData.todayResult;
-    const todayDraw = guangzhouLottoData.drawHistory.find(draw => draw.date === todayStr);
+    const todayDraw = guangzhouLottoData.drawHistory.find(draw => draw.date === targetDateStr);
     
     if (todayResult || todayDraw) {
         const numbers = todayResult || todayDraw.numbers;
@@ -408,7 +426,7 @@ function updateTodayResult() {
         
         resultStatusElement.innerHTML = `
             <i class="fas fa-check-circle"></i>
-            <span>已开奖 - ${todayStr} 16:30</span>
+            <span>已开奖 - ${targetDateStr} 00:30</span>
         `;
         resultStatusElement.style.color = '#4CAF50';
     } else {
@@ -425,10 +443,63 @@ function updateTodayResult() {
         
         resultStatusElement.innerHTML = `
             <i class="fas fa-clock"></i>
-            <span>开奖时间: 16:30 (GMT+8)</span>
+            <span>开奖时间: 00:30 (GMT+8)</span>
         `;
         resultStatusElement.style.color = '#e65100';
     }
+}
+
+function updateCountdown() {
+    const now = new Date();
+    const today = now.toISOString().split('T')[0];
+    
+    // Waktu draw hari ini 00:30 GMT+8
+    // Buat waktu dalam timezone Guangzhou
+    let drawTimeGuangzhou = new Date(`${today}T00:30:00+08:00`);
+    
+    // Konversi ke UTC untuk perhitungan
+    let drawTimeUTC = new Date(drawTimeGuangzhou.getTime() - (8 * 60 * 60 * 1000));
+    
+    // Jika sudah lewat waktu draw hari ini, targetkan besok
+    if (now > drawTimeUTC) {
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowStr = tomorrow.toISOString().split('T')[0];
+        drawTimeGuangzhou = new Date(`${tomorrowStr}T00:30:00+08:00`);
+        drawTimeUTC = new Date(drawTimeGuangzhou.getTime() - (8 * 60 * 60 * 1000));
+    }
+    
+    const diff = drawTimeUTC - now;
+    
+    // Jika sudah waktunya draw
+    if (diff <= 0) {
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        
+        // Cek dan generate result
+        const todayNumbers = checkAndGenerateDailyResult();
+        if (todayNumbers) {
+            updateTodayResult();
+            displayLatestDraw();
+            updateStatsDisplay();
+            showNotification(`今日开奖结果已生成: ${todayNumbers.join(', ')}`);
+            
+            // Refresh history data
+            loadHistoryData();
+        }
+        return;
+    }
+    
+    // Hitung jam, menit, detik
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update display
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 }
 
 // ===== COUNTDOWN FUNCTIONS =====
