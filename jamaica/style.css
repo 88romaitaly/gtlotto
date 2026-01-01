@@ -551,7 +551,7 @@ body {
 .result-display {
     background: var(--card-bg);
     border-radius: 20px;
-    padding: 40px;
+    padding: 40px 10px;
     box-shadow: var(--card-shadow);
     border: 1px solid rgba(101, 67, 33, 0.1);
     position: relative;
@@ -579,7 +579,7 @@ body {
 .numbers-container {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
     margin: 40px 0;
     flex-wrap: wrap;
 }
