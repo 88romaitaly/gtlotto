@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solomon Lottery - Official Results</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/lottery.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Solomon Lottery</h1>
+                    <p class="tagline">Wisdom in Winning</p>
+                </div>
+            </div>
+            <div class="current-date">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="currentDate"></span>
+            </div>
+        </header>
+
+        <!-- Today's Result Section -->
+        <section class="today-section">
+            <div class="section-header">
+                <h2><i class="fas fa-star"></i> Today's Winning Numbers</h2>
+                <div class="live-badge">
+                    <i class="fas fa-circle"></i> LIVE
+                </div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-date">
+                    <i class="fas fa-calendar-day"></i>
+                    <span id="todayDate"></span>
+                </div>
+                
+                <div class="numbers-container" id="todayNumbers">
+                    <!-- Numbers will be inserted here -->
+                    <div class="loading-numbers">
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                    </div>
+                </div>
+                
+                <div class="result-status" id="resultStatus">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Updating...</span>
+                </div>
+            </div>
+            
+            <div class="update-info">
+                <i class="fas fa-info-circle"></i>
+                <span>Results updated daily at 18:00 GMT</span>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history-section">
+            <div class="section-header">
+                <h2><i class="fas fa-history"></i> Last 30 Days Results</h2>
+                <div class="count-badge">
+                    <span id="historyCount">30</span> days
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Number 1</th>
+                            <th>Number 2</th>
+                            <th>Number 3</th>
+                            <th>Number 4</th>
+                            <th>Day</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTable">
+                        <!-- History rows will be inserted here -->
+                        <tr class="loading-row">
+                            <td colspan="6">
+                                <div class="loading-spinner">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Loading history...
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="history-note">
+                <i class="fas fa-database"></i>
+                <span>Showing last 30 results. Older records are automatically archived.</span>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <h2><i class="fas fa-chart-bar"></i> Quick Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalDraws">0</h3>
+                        <p>Total Draws This Month</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="mostFrequent">-</h3>
+                        <p>Most Frequent Number</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="lastUpdate">-</h3>
+                        <p>Last Update</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-crown"></i>
+                    <span>Solomon Lottery</span>
+                </div>
+                
+                <div class="footer-info">
+                    <p><i class="fas fa-envelope"></i> contact@solomonlottery.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Official Lottery Center</p>
+                </div>
+                
+                <div class="footer-disclaimer">
+                    <p><i class="fas fa-exclamation-triangle"></i> This is an official results portal. Solomon Lottery is a registered trademark.</p>
+                    <p class="copyright">© 2024 Solomon Lottery. All rights reserved.</p>
+                </div>
+            </div>
+            
+            <div class="footer-update">
+                <i class="fas fa-sync-alt"></i>
+                <span>Auto-refresh in <span id="refreshCountdown">300</span>s</span>
+                <button class="refresh-btn" onclick="loadData()">
+                    <i class="fas fa-redo"></i> Refresh Now
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
