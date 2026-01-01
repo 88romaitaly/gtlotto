@@ -1,26 +1,12 @@
-// SOLOMON LOTTERY - MAIN APPLICATION
-// This file handles display logic - DO NOT EDIT
-
 class LotteryApp {
     constructor() {
         this.today = new Date().toISOString().split('T')[0];
-        this.refreshInterval = 300; // 5 minutes in seconds
-        this.countdown = this.refreshInterval;
         this.init();
     }
 
     init() {
-        // Set current date
         this.setCurrentDate();
-        
-        // Load and display data
-        this.loadData();
-        
-        // Start auto-refresh countdown
-        this.startCountdown();
-        
-        // Update every 5 minutes
-        setInterval(() => this.loadData(), this.refreshInterval * 1000);
+        this.displayData();
     }
 
     setCurrentDate() {
@@ -29,7 +15,7 @@ class LotteryApp {
         document.getElementById('currentDate').textContent = dateStr;
     }
 
-    loadData() {
+    displayData() {
         try {
             // Ensure data is valid
             if (!lotteryData || !lotteryData.results) {
@@ -50,12 +36,9 @@ class LotteryApp {
             // Update statistics
             this.updateStatistics(sortedResults);
             
-            // Update UI status
-            this.updateStatus(true);
-            
         } catch (error) {
             console.error('Error loading data:', error);
-            this.updateStatus(false);
+            this.showError();
         }
     }
 
@@ -135,42 +118,6 @@ class LotteryApp {
         });
         
         tableBody.innerHTML = tableHTML;
-        
-        // Add number cell styling
-        const style = document.createElement('style');
-        style.textContent = `
-            .number-cell {
-                display: inline-block;
-                width: 36px;
-                height: 36px;
-                line-height: 36px;
-                border-radius: 50%;
-                background: #334155;
-                font-weight: 600;
-                color: #f8fafc;
-            }
-            .no-result {
-                text-align: center;
-                padding: 40px;
-                color: #94a3b8;
-            }
-            .no-result i {
-                font-size: 48px;
-                margin-bottom: 15px;
-                color: #475569;
-            }
-            .no-history {
-                text-align: center;
-                padding: 40px;
-                color: #94a3b8;
-            }
-            .no-history i {
-                font-size: 36px;
-                margin-bottom: 10px;
-                color: #475569;
-            }
-        `;
-        document.head.appendChild(style);
     }
 
     updateStatistics(results) {
@@ -207,26 +154,6 @@ class LotteryApp {
         document.getElementById('lastUpdate').textContent = this.formatDate(lastUpdate);
     }
 
-    updateStatus(success) {
-        const statusEl = document.getElementById('resultStatus');
-        if (success) {
-            const now = new Date().toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
-                minute: '2-digit',
-                second: '2-digit'
-            });
-            statusEl.innerHTML = `
-                <i class="fas fa-check-circle" style="color: #10b981"></i>
-                <span>Last updated: ${now}</span>
-            `;
-        } else {
-            statusEl.innerHTML = `
-                <i class="fas fa-exclamation-triangle" style="color: #f59e0b"></i>
-                <span>Update failed. Please refresh the page.</span>
-            `;
-        }
-    }
-
     formatDate(dateStr) {
         if (!dateStr || dateStr === 'Never') return dateStr;
         const date = new Date(dateStr);
@@ -236,59 +163,16 @@ class LotteryApp {
         });
     }
 
-    startCountdown() {
-        setInterval(() => {
-            this.countdown--;
-            if (this.countdown <= 0) {
-                this.countdown = this.refreshInterval;
-            }
-            document.getElementById('refreshCountdown').textContent = this.countdown;
-        }, 1000);
+    showError() {
+        const statusEl = document.getElementById('resultStatus');
+        statusEl.innerHTML = `
+            <i class="fas fa-exclamation-triangle" style="color: #f59e0b"></i>
+            <span>Unable to load data. Please refresh the page.</span>
+        `;
     }
 }
 
-// Initialize app when DOM is loaded
+// Initialize app
 document.addEventListener('DOMContentLoaded', () => {
-    window.lotteryApp = new LotteryApp();
-});
-
-// Global function for manual refresh
-window.loadData = function() {
-    if (window.lotteryApp) {
-        window.lotteryApp.loadData();
-        window.lotteryApp.countdown = window.lotteryApp.refreshInterval;
-        
-        // Show refresh feedback
-        const btn = document.querySelector('.refresh-btn');
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Refreshed!';
-        btn.style.background = '#10b981';
-        
-        setTimeout(() => {
-            btn.innerHTML = originalHTML;
-            btn.style.background = '';
-        }, 2000);
-    }
-};
-
-// Add animation for number balls
-document.addEventListener('DOMContentLoaded', () => {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ballAppear {
-            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-            70% { transform: scale(1.1) rotate(10deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
-        
-        .number-ball {
-            animation: ballAppear 0.6s ease-out;
-        }
-        
-        .number-ball:nth-child(1) { animation-delay: 0.1s; }
-        .number-ball:nth-child(2) { animation-delay: 0.2s; }
-        .number-ball:nth-child(3) { animation-delay: 0.3s; }
-        .number-ball:nth-child(4) { animation-delay: 0.4s; }
-    `;
-    document.head.appendChild(style);
+    new LotteryApp();
 });
