@@ -9,7 +9,7 @@ const albaniaLottoData = {
 {
             date: "2025-01-01",
             draw: 244,
-            numbers: [0, 5, 9, 3],
+            numbers: [8, 9, 1, 7],
             time: "14:00"
         },
         {
