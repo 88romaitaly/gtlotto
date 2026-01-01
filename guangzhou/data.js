@@ -1,11 +1,8 @@
-// 广州彩票数据 - DIPERBAIKI berdasarkan data historis
+// 广州彩票数据 - DIPERBAIKI berdasarkan data historis dengan waktu 00:30 GMT+8
 const guangzhouLottoData = {
     // 历史开奖记录 - Diperbaiki berdasarkan data aktual
     drawHistory: [
         // Data untuk Januari 2026
-        
-        
-        // Data historis dari Desember 2025 (berdasarkan gambar)
         { date: "2025-12-31", numbers: [0, 4, 3, 9] },
         { date: "2025-12-30", numbers: [5, 4, 7, 7] },
         { date: "2025-12-29", numbers: [3, 0, 7, 1] },
@@ -14,7 +11,6 @@ const guangzhouLottoData = {
         { date: "2025-12-26", numbers: [8, 2, 6, 3] },
         { date: "2025-12-25", numbers: [9, 4, 7, 6] },
         { date: "2025-12-24", numbers: [1, 1, 3, 8] },
-    
         { date: "2025-12-23", numbers: [9, 0, 1, 1] },
         { date: "2025-12-22", numbers: [8, 3, 9, 6] },
         { date: "2025-12-21", numbers: [6, 9, 0, 7] },
@@ -78,14 +74,14 @@ const guangzhouLottoData = {
     numberStats: {},
     
     // 最后更新日期
-    lastUpdated: "2026-01-01 00:00:26",
+    lastUpdated: "2026-01-01 00:30:00",
     
-    // 今日开奖结果 (初始为空，将在16:30 GMT+8生成)
+    // 今日开奖结果 (初始为空，将在00:30 GMT+8生成)
     todayResult: null,
     
-    // 开奖时间设置 (16:30 GMT+8, 对应 08:30 GMT+0)
+    // 开奖时间设置 (00:30 GMT+8 = 16:30 GMT+0)
     drawTime: {
-        hour: 16,    // GMT+0 小时
+        hour: 16,   // GMT+0 小时 (00:30 GMT+8 = 16:30 GMT+0)
         minute: 30  // GMT+0 分钟
     }
 };
@@ -210,7 +206,7 @@ function getTopNumbers(count = 4) {
     return numbers.slice(0, count);
 }
 
-// 检查是否应该生成今日开奖结果
+// 检查是否应该生成今日开奖结果 - DIPERBAIKI untuk 00:30 GMT+8
 function checkAndGenerateDailyResult() {
     const now = new Date();
     
@@ -219,6 +215,7 @@ function checkAndGenerateDailyResult() {
     const guangzhouDateStr = guangzhouTime.toISOString().split('T')[0];
     
     // Tentukan tanggal untuk draw berdasarkan waktu Guangzhou
+    // Draw terjadi pada 00:30 GMT+8 setiap hari
     let targetDateStr;
     if (guangzhouTime.getHours() >= 0 && guangzhouTime.getMinutes() >= 30) {
         // Sudah lewat 00:30 GMT+8, gunakan tanggal hari ini
@@ -242,9 +239,6 @@ function checkAndGenerateDailyResult() {
     }
     
     // 检查是否到了开奖时间 (00:30 GMT+8)
-    // Draw terjadi setiap hari pada 00:30 GMT+8
-    // Jika sekarang sudah lewat 00:30 GMT+8 untuk tanggal target, generate result
-    
     const isPastDrawTime = guangzhouTime.getHours() > 0 || 
                           (guangzhouTime.getHours() === 0 && guangzhouTime.getMinutes() >= 30);
     
@@ -305,23 +299,6 @@ function getHistoryByDateRange(startDate, endDate) {
 // 获取 data untuk hari tertentu
 function getDrawByDate(dateStr) {
     return guangzhouLottoData.drawHistory.find(draw => draw.date === dateStr);
-}
-
-// 获取 hari dalam seminggu dalam bahasa Mandarin
-function getChineseDayOfWeek(dateStr) {
-    const date = new Date(dateStr);
-    const days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-    return days[date.getDay()];
-}
-
-// 获取 periode berdasarkan tanggal
-function getPeriodNumber(dateStr) {
-    // Periode dihitung dari 1 Januari 2025
-    const startDate = new Date('2025-01-01');
-    const currentDate = new Date(dateStr);
-    const diffTime = Math.abs(currentDate - startDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays + 1;
 }
 
 // Inisialisasi statistik saat pertama kali load
