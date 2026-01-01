@@ -20,6 +20,7 @@ let autoSpinInterval = null;
 
 // 初始化应用
 function initApp() {
+    createWheelNumbers();
     updateCurrentTime();
     updateNextDrawTime();
     displayLatestDraw();
@@ -40,6 +41,60 @@ function initApp() {
     
     // 初始显示
     displayPlaceholderNumbers();
+}
+
+// 创建转盘数字 - DIPERBAIKI agar angka tersebar merata
+function createWheelNumbers() {
+    fortuneWheel.innerHTML = '';
+    
+    // 创建中心点
+    const wheelCenter = document.createElement('div');
+    wheelCenter.className = 'wheel-center';
+    wheelCenter.innerHTML = '<div class="wheel-center-circle"><i class="fas fa-gem"></i></div>';
+    fortuneWheel.appendChild(wheelCenter);
+    
+    // 创建8个数字 (0-7) 均匀分布在转盘上
+    const numbers = [0, 1, 2, 3, 4, 5, 6, 7];
+    const radius = 120; // Radius dari pusat ke angka
+    
+    numbers.forEach((num, index) => {
+        const wheelNumber = document.createElement('div');
+        wheelNumber.className = 'wheel-number';
+        wheelNumber.textContent = num;
+        
+        // Hitung posisi menggunakan trigonometri untuk distribusi merata
+        const angle = (index * 45) * (Math.PI / 180); // Konversi ke radian
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        // Atur posisi absolut
+        wheelNumber.style.left = `calc(50% + ${x}px)`;
+        wheelNumber.style.top = `calc(50% - ${y}px)`;
+        wheelNumber.style.transform = `translate(-50%, -50%)`;
+        
+        fortuneWheel.appendChild(wheelNumber);
+    });
+    
+    // Tambahkan 2 angka lagi (8, 9) di posisi yang berbeda
+    const extraNumbers = [8, 9];
+    extraNumbers.forEach((num, index) => {
+        const wheelNumber = document.createElement('div');
+        wheelNumber.className = 'wheel-number';
+        wheelNumber.textContent = num;
+        
+        // Posisi sedikit lebih dekat ke pusat
+        const angle = (index * 180 + 22.5) * (Math.PI / 180);
+        const x = Math.cos(angle) * (radius - 30);
+        const y = Math.sin(angle) * (radius - 30);
+        
+        wheelNumber.style.left = `calc(50% + ${x}px)`;
+        wheelNumber.style.top = `calc(50% - ${y}px)`;
+        wheelNumber.style.transform = `translate(-50%, -50%)`;
+        wheelNumber.style.backgroundColor = '#ffeb3b';
+        wheelNumber.style.borderColor = '#ff9800';
+        
+        fortuneWheel.appendChild(wheelNumber);
+    });
 }
 
 // 更新当前时间
@@ -136,8 +191,6 @@ function displayLatestDraw() {
         });
         
         latestDrawTimeElement.textContent = `开奖时间: ${drawTimeString} 16:30`;
-    } else {
-        latestDrawTimeElement.textContent = '暂无开奖数据';
     }
 }
 
@@ -147,194 +200,4 @@ function updateStatsDisplay() {
     totalDrawsElement.textContent = guangzhouLottoData.drawHistory.length;
     
     // 更新最后更新时间
-    lastUpdateElement.textContent = guangzhouLottoData.lastUpdated;
-    
-    // 更新频率图表
-    updateFrequencyChart();
-    
-    // 更新热门号码
-    updateTopNumbers();
-}
-
-// 更新频率图表
-function updateFrequencyChart() {
-    frequencyChartElement.innerHTML = '';
-    
-    // 获取最大出现次数用于计算比例
-    const maxCount = Math.max(...Object.values(guangzhouLottoData.numberStats));
-    
-    for (let i = 0; i <= 9; i++) {
-        const count = guangzhouLottoData.numberStats[i] || 0;
-        const barHeight = maxCount > 0 ? (count / maxCount) * 100 : 0;
-        
-        const barContainer = document.createElement('div');
-        barContainer.className = 'bar-container';
-        
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.height = `${barHeight}%`;
-        bar.title = `数字 ${i}: 出现 ${count} 次`;
-        
-        const barLabel = document.createElement('div');
-        barLabel.className = 'bar-label';
-        barLabel.textContent = i;
-        
-        barContainer.appendChild(bar);
-        barContainer.appendChild(barLabel);
-        frequencyChartElement.appendChild(barContainer);
-    }
-}
-
-// 更新热门号码
-function updateTopNumbers() {
-    topNumbersListElement.innerHTML = '';
-    
-    const topNumbers = getTopNumbers(4);
-    
-    topNumbers.forEach((item, index) => {
-        const topNumberElement = document.createElement('div');
-        topNumberElement.className = 'top-number';
-        
-        const rankClass = index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : '';
-        if (rankClass) {
-            topNumberElement.classList.add(rankClass);
-        }
-        
-        topNumberElement.innerHTML = `
-            <div class="top-number-value">${item.number}</div>
-            <div class="top-number-count">出现 ${item.count} 次</div>
-        `;
-        
-        topNumbersListElement.appendChild(topNumberElement);
-    });
-}
-
-// 显示占位符号码
-function displayPlaceholderNumbers() {
-    resultNumbers.innerHTML = '';
-    
-    for (let i = 0; i < 4; i++) {
-        const placeholder = document.createElement('div');
-        placeholder.className = 'number-placeholder';
-        placeholder.textContent = '?';
-        resultNumbers.appendChild(placeholder);
-    }
-}
-
-// 旋转转盘
-function spinWheel() {
-    if (isSpinning) return;
-    
-    isSpinning = true;
-    spinButton.disabled = true;
-    
-    // 生成随机旋转角度 (至少旋转5圈以上)
-    const spinDegrees = 1800 + Math.floor(Math.random() * 1800);
-    
-    // 应用旋转动画
-    fortuneWheel.style.transform = `rotate(${spinDegrees}deg)`;
-    
-    // 在旋转过程中生成随机号码
-    setTimeout(() => {
-        const randomNumbers = generateRandomNumbers();
-        displayResultNumbers(randomNumbers);
-        
-        // 更新旋转次数
-        spinCount++;
-        
-        // 重置按钮状态
-        setTimeout(() => {
-            isSpinning = false;
-            spinButton.disabled = false;
-        }, 500);
-        
-        // 如果自动旋转开启，继续旋转
-        if (isAutoSpinning) {
-            setTimeout(spinWheel, 1000);
-        }
-    }, 3000); // 3秒后显示结果
-}
-
-// 显示结果号码
-function displayResultNumbers(numbers) {
-    resultNumbers.innerHTML = '';
-    
-    numbers.forEach((number, index) => {
-        setTimeout(() => {
-            const numberElement = document.createElement('div');
-            numberElement.className = 'result-number';
-            numberElement.textContent = number;
-            resultNumbers.appendChild(numberElement);
-        }, index * 200); // 逐个显示
-    });
-}
-
-// 切换自动旋转
-function toggleAutoSpin() {
-    if (isAutoSpinning) {
-        // 停止自动旋转
-        clearInterval(autoSpinInterval);
-        isAutoSpinning = false;
-        autoSpinButton.innerHTML = '<i class="fas fa-robot"></i> 自动旋转';
-        autoSpinButton.style.background = 'linear-gradient(to right, #4CAF50, #2E7D32)';
-    } else {
-        // 开始自动旋转
-        isAutoSpinning = true;
-        autoSpinButton.innerHTML = '<i class="fas fa-stop"></i> 停止自动旋转';
-        autoSpinButton.style.background = 'linear-gradient(to right, #f44336, #d32f2f)';
-        
-        // 如果当前没有在旋转，立即开始一次旋转
-        if (!isSpinning) {
-            spinWheel();
-        }
-    }
-}
-
-// 显示通知
-function showNotification(message) {
-    // 创建通知元素
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: linear-gradient(to right, #ffc107, #ff9800);
-        color: #5a3a00;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        z-index: 1000;
-        font-weight: bold;
-        animation: slideIn 0.5s ease, fadeOut 0.5s ease 4.5s;
-        max-width: 300px;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // 5秒后移除通知
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-        }
-    }, 5000);
-}
-
-// 添加CSS动画
-const styleSheet = document.createElement('style');
-styleSheet.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-    }
-`;
-document.head.appendChild(styleSheet);
-
-// 初始化应用
-document.addEventListener('DOMContentLoaded', initApp);
+   
