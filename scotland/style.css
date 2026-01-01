@@ -64,15 +64,18 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .scottish-flag {
-    width: 80px;
-    height: 60px;
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(45px, 11vw, 60px);
     position: relative;
     border: 2px solid var(--scotland-yellow);
     border-radius: 8px;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .flag-stripe {
@@ -110,13 +113,16 @@ body {
 }
 
 .header-title h1 {
-    font-size: 36px;
+    font-size: clamp(24px, 5vw, 36px);
     font-weight: 800;
     background: linear-gradient(45deg, var(--scotland-yellow), var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .subtitle {
@@ -129,9 +135,10 @@ body {
 
 .header-time {
     background: var(--card-bg);
-    padding: 15px 25px;
+    padding: clamp(10px, 3vw, 15px) clamp(15px, 4vw, 25px);
     border-radius: 12px;
     border: 1px solid var(--scotland-yellow);
+    min-width: 120px;
 }
 
 .time-box {
@@ -147,7 +154,7 @@ body {
 }
 
 .time-box span {
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 24px);
     font-weight: 700;
     color: var(--text-light);
 }
@@ -242,46 +249,51 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 25px;
+    flex-wrap: nowrap;
 }
 
 .time-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 70px;
 }
 
 .time-value {
-    font-size: 64px;
+    font-size: clamp(32px, 8vw, 64px);
     font-weight: 800;
     background: linear-gradient(45deg, var(--scotland-yellow), var(--gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    min-width: 100px;
-    height: 90px;
+    min-width: 70px;
+    min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     border: 2px solid var(--scotland-yellow);
+    padding: 10px;
 }
 
 .time-separator {
-    font-size: 48px;
+    font-size: clamp(24px, 6vw, 48px);
     font-weight: 800;
     color: var(--scotland-yellow);
-    margin-top: -15px;
+    margin-top: -10px;
+    line-height: 1;
 }
 
 .time-label {
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: clamp(10px, 2vw, 14px);
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .next-draw-info {
@@ -362,14 +374,14 @@ body {
 
 /* Scotland Lotto Ball Style */
 .ball {
-    width: 80px;
-    height: 80px;
+    width: clamp(50px, 12vw, 80px);
+    height: clamp(50px, 12vw, 80px);
     background: radial-gradient(circle at 65% 15%, white 1px, 
                               var(--scotland-yellow) 3%, 
                               #B8860B 60%, 
                               var(--gold-dark) 100%);
     color: white;
-    font-size: 28px;
+    font-size: clamp(20px, 5vw, 28px);
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -507,14 +519,14 @@ body {
 }
 
 .hot-ball, .cold-ball {
-    width: 50px;
-    height: 50px;
+    width: clamp(35px, 8vw, 50px);
+    height: clamp(35px, 8vw, 50px);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     font-weight: 700;
-    font-size: 18px;
+    font-size: clamp(14px, 3vw, 18px);
 }
 
 .hot-ball {
@@ -605,14 +617,14 @@ body {
 }
 
 .table-ball {
-    width: 35px;
-    height: 35px;
+    width: clamp(25px, 6vw, 35px);
+    height: clamp(25px, 6vw, 35px);
     background: radial-gradient(circle at 65% 15%, white 1px, 
                               var(--scotland-yellow) 3%, 
                               #B8860B 60%, 
                               var(--gold-dark) 100%);
     color: white;
-    font-size: 14px;
+    font-size: clamp(12px, 3vw, 14px);
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -797,71 +809,41 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 992px) {
+@media (max-width: 992px) and (min-width: 769px) {
     .countdown-display {
-        gap: 10px;
+        gap: 8px;
     }
     
     .time-value {
         font-size: 48px;
-        min-width: 80px;
+        min-width: 60px;
         height: 70px;
-    }
-    
-    .time-separator {
-        font-size: 36px;
     }
 }
 
 @media (max-width: 768px) {
-    .header-top {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .countdown-display {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .time-separator {
-        display: none;
-    }
-    
-    .result-numbers {
-        gap: 15px;
-    }
-    
-    .ball {
-        width: 60px;
-        height: 60px;
-        font-size: 22px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .table-footer {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
     .container {
         padding: 15px;
     }
     
-    .ball {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
+    .header-top {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
+    
+    .header-title {
+        order: 1;
+        width: 100%;
+        margin: 15px 0;
+    }
+    
+    .scottish-flag {
+        order: 2;
+    }
+    
+    .header-time {
+        order: 3;
     }
     
     .header-info {
@@ -869,9 +851,218 @@ body {
         gap: 10px;
     }
     
+    .info-item {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .countdown-display {
+        gap: 5px;
+    }
+    
+    .time-unit {
+        min-width: 60px;
+    }
+    
+    .time-value {
+        min-width: 60px;
+        min-height: 50px;
+        padding: 8px;
+    }
+    
+    .result-numbers {
+        gap: 10px;
+    }
+    
+    .results-table {
+        font-size: 14px;
+    }
+    
+    .results-table th,
+    .results-table td {
+        padding: 12px 8px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-display {
+        gap: 3px;
+    }
+    
+    .time-unit {
+        min-width: 50px;
+    }
+    
+    .time-value {
+        min-width: 50px;
+        min-height: 40px;
+        font-size: 28px;
+        padding: 5px;
+    }
+    
+    .time-separator {
+        font-size: 20px;
+        margin-top: -5px;
+    }
+    
+    .time-label {
+        font-size: 9px;
+    }
+    
     .section-title {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
+    
+    .result-meta {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .draw-number, .draw-date {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-brand {
+        justify-content: center;
+    }
+    
+    .footer-links {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .legal {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 320px) {
+    .time-unit {
+        min-width: 45px;
+    }
+    
+    .time-value {
+        min-width: 45px;
+        min-height: 35px;
+        font-size: 24px;
+    }
+    
+    .time-separator {
+        font-size: 18px;
+    }
+    
+    .ball {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .header-title h1 {
+        font-size: 22px;
+        letter-spacing: 0.5px;
+    }
+    
+    .table-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .view-all {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .countdown-display {
+        gap: 15px;
+    }
+    
+    .time-value {
+        min-height: 50px;
+        font-size: 32px;
+    }
+    
+    .header-top {
+        margin-bottom: 10px;
+    }
+    
+    .latest-section, .stats-section, .recent-section {
+        margin-bottom: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ball, .time-value, .hot-ball, .cold-ball, .table-ball {
+        animation: none;
+        transition: none;
+    }
+    
+    .live-dot, .indicator-dot {
+        animation: none;
+    }
+}
+
+/* Prevent Text Overflow */
+.header-title, .time-label, .draw-number, .draw-date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Smooth transitions */
+.time-value, .ball, .hot-ball, .cold-ball, .table-ball {
+    transition: all 0.3s ease;
+}
+
+/* Error and loading states */
+.error-message {
+    text-align: center;
+    padding: 20px;
+    color: #FF5555;
+}
+
+.error-message i {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: #AAAAAA;
+}
+
+.no-results i {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.no-history {
+    text-align: center;
+    padding: 40px;
+    color: #AAAAAA;
+}
+
+.no-history i {
+    font-size: 36px;
+    margin-bottom: 15px;
 }
