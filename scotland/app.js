@@ -291,6 +291,43 @@ window.toggleViewAll = function() {
     }
 };
 
+displayLatestResult(results) {
+    if (results.length === 0) {
+        // Show message if no data
+        document.getElementById('latestNumbers').innerHTML = `
+            <div class="no-result">
+                <i class="fas fa-history"></i>
+                <p>No draw results available yet</p>
+            </div>
+        `;
+        return;
+    }
+    
+    const latest = results[0];
+    
+    // Update draw info
+    document.getElementById('drawNumber').textContent = `Draw #${latest.draw}`;
+    document.getElementById('latestDraw').textContent = latest.draw;
+    
+    // Format date
+    const date = new Date(latest.date);
+    const dateStr = date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    });
+    document.getElementById('latestDate').textContent = dateStr;
+    
+    // Update time
+    document.getElementById('drawTime').textContent = `${latest.time} GMT`;
+    
+    // Display numbers
+    const numbersContainer = document.getElementById('latestNumbers');
+    numbersContainer.innerHTML = latest.numbers.map(num => 
+        `<div class="ball">${num}</div>`
+    ).join('');
+}
+
 // Add table expansion styling
 document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
