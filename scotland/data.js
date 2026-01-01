@@ -7,9 +7,9 @@ const scotlandLottoData = {
     // Draw time: 11:30 GMT (18:30 WIB converted)
     results: [
         // New entries go at the TOP
-        // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "HH:MM" }
+        // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "18:57" }
         
-        // December 2025 - Actual data from your image
+        // December 2025
         {
             date: "2025-12-31",
             draw: 230,
