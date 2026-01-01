@@ -213,58 +213,73 @@ function getTopNumbers(count = 4) {
 // 检查是否应该生成今日开奖结果
 function checkAndGenerateDailyResult() {
     const now = new Date();
-    const today = now.toISOString().split('T')[0];
     
-    console.log(`Checking draw for date: ${today}, Current time: ${now.toISOString()}`);
+    // Konversi ke waktu Guangzhou (GMT+8)
+    const guangzhouTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+    const guangzhouDateStr = guangzhouTime.toISOString().split('T')[0];
     
-    // 检查今天是否已经有开奖结果
-    const todayDraw = guangzhouLottoData.drawHistory.find(draw => draw.date === today);
-    
-    if (todayDraw) {
-        console.log(`Draw already exists for ${today}: ${todayDraw.numbers}`);
-        guangzhouLottoData.todayResult = todayDraw.numbers;
-        return todayDraw.numbers;
+    // Tentukan tanggal untuk draw berdasarkan waktu Guangzhou
+    let targetDateStr;
+    if (guangzhouTime.getHours() >= 0 && guangzhouTime.getMinutes() >= 30) {
+        // Sudah lewat 00:30 GMT+8, gunakan tanggal hari ini
+        targetDateStr = guangzhouDateStr;
+    } else {
+        // Belum 00:30 GMT+8, gunakan tanggal kemarin
+        const yesterday = new Date(guangzhouTime);
+        yesterday.setDate(yesterday.getDate() - 1);
+        targetDateStr = yesterday.toISOString().split('T')[0];
     }
     
-    // 检查是否到了开奖时间 (16:30 GMT+8 = 08:30 GMT+0)
-    const drawHour = guangzhouLottoData.drawTime.hour;
-    const drawMinute = guangzhouLottoData.drawTime.minute;
+    console.log(`Checking draw for target date: ${targetDateStr}, Guangzhou time: ${guangzhouTime.getHours()}:${guangzhouTime.getMinutes()}`);
     
-    console.log(`Draw time: ${drawHour}:${drawMinute} UTC, Current UTC: ${now.getUTCHours()}:${now.getUTCMinutes()}`);
+    // 检查是否已经有开奖结果
+    const targetDraw = guangzhouLottoData.drawHistory.find(draw => draw.date === targetDateStr);
     
-    // 如果当前时间已经过了开奖时间，生成今日结果
-    const isPastDrawTime = now.getUTCHours() > drawHour || 
-                          (now.getUTCHours() === drawHour && now.getUTCMinutes() >= drawMinute);
+    if (targetDraw) {
+        console.log(`Draw already exists for ${targetDateStr}: ${targetDraw.numbers}`);
+        guangzhouLottoData.todayResult = targetDraw.numbers;
+        return targetDraw.numbers;
+    }
     
-    if (isPastDrawTime) {
-        console.log(`It's past draw time. Generating result for ${today}`);
+    // 检查是否到了开奖时间 (00:30 GMT+8)
+    // Draw terjadi setiap hari pada 00:30 GMT+8
+    // Jika sekarang sudah lewat 00:30 GMT+8 untuk tanggal target, generate result
+    
+    const isPastDrawTime = guangzhouTime.getHours() > 0 || 
+                          (guangzhouTime.getHours() === 0 && guangzhouTime.getMinutes() >= 30);
+    
+    // Untuk tanggal target hari ini, cek apakah sudah lewat 00:30
+    const shouldGenerate = isPastDrawTime && targetDateStr === guangzhouDateStr;
+    
+    if (shouldGenerate) {
+        console.log(`It's past 00:30 GMT+8. Generating result for ${targetDateStr}`);
         
-        // 生成今日开奖号码 (gunakan pola historis untuk hasil yang lebih realistis)
+        // 生成今日开奖号码
         let todayNumbers;
         
-        // Untuk tanggal 1 Januari 2026, gunakan data yang sudah ada di history
-        if (today === "2026-01-01") {
-            const existingDraw = guangzhouLottoData.drawHistory.find(d => d.date === "2026-01-01");
-            todayNumbers = existingDraw ? existingDraw.numbers : generateHistoricalBasedNumbers();
-            console.log(`Using existing draw for 2026-01-01: ${todayNumbers}`);
+        // Untuk tanggal spesifik, gunakan data yang sudah ada di history
+        const existingDraw = guangzhouLottoData.drawHistory.find(d => d.date === targetDateStr);
+        if (existingDraw) {
+            todayNumbers = existingDraw.numbers;
+            console.log(`Using existing draw for ${targetDateStr}: ${todayNumbers}`);
         } else {
             // Untuk tanggal lain, gunakan pola historis
             todayNumbers = generateHistoricalBasedNumbers();
-            console.log(`Generated new numbers for ${today}: ${todayNumbers}`);
+            console.log(`Generated new numbers for ${targetDateStr}: ${todayNumbers}`);
         }
         
-        // Cek apakah draw untuk hari ini sudah ada di history (untuk kasus data yang sudah di-load)
-        const alreadyInHistory = guangzhouLottoData.drawHistory.some(draw => draw.date === today);
+        // Cek apakah draw untuk tanggal target sudah ada di history
+        const alreadyInHistory = guangzhouLottoData.drawHistory.some(draw => draw.date === targetDateStr);
         
         if (!alreadyInHistory) {
             // 添加到历史记录
             const newDraw = {
-                date: today,
+                date: targetDateStr,
                 numbers: todayNumbers
             };
             
             guangzhouLottoData.drawHistory.push(newDraw);
-            console.log(`Added new draw to history for ${today}`);
+            console.log(`Added new draw to history for ${targetDateStr}`);
         }
         
         guangzhouLottoData.todayResult = todayNumbers;
@@ -275,7 +290,7 @@ function checkAndGenerateDailyResult() {
         return todayNumbers;
     }
     
-    console.log(`Not yet draw time for ${today}`);
+    console.log(`Not yet draw time for ${targetDateStr}`);
     return null;
 }
 
