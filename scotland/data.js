@@ -10,18 +10,18 @@ const scotlandLottoData = {
             date: "2025-01-01",
             draw: 231,
             numbers: [2, 9, 4, 6],
-            time: "18:30"
+            time: "11:30"
         },{
             date: "2025-12-31",
             draw: 230,
             numbers: [1, 8, 0, 8],
-            time: "18:57"
+            time: "11:57"
         },
         {
             date: "2025-12-30",
             draw: 229,
             numbers: [3, 2, 8, 1],
-            time: "19:08"
+            time: "11:08"
         },
         {
             date: "2025-12-29",
