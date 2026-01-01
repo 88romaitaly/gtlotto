@@ -22,6 +22,371 @@ body {
     overflow: hidden;
     border: 3px solid #ffc107;
 }
+
+/* 头部样式 */
+header {
+    background: linear-gradient(to right, #ffc107, #ff9800);
+    color: #5a3a00;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 5px solid #ff9800;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #ff9800;
+    border: 4px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo-section h1 {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 42px;
+    font-weight: normal;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.subtitle {
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.time-info {
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.current-time, .next-draw {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.current-time i, .next-draw i {
+    font-size: 22px;
+}
+
+#current-time, #next-draw-time {
+    font-weight: bold;
+    color: #5a3a00;
+}
+
+/* 主内容区样式 */
+main {
+    padding: 25px;
+}
+
+section {
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 32px;
+    color: #e65100;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ffc107;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+h3 {
+    font-size: 26px;
+    color: #ff9800;
+    margin-bottom: 15px;
+}
+
+h4 {
+    font-size: 22px;
+    color: #e65100;
+    margin-bottom: 15px;
+}
+
+/* 幸运之轮区域 */
+.fortune-wheel-section {
+    background-color: #fffef5;
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px dashed #ffc107;
+    margin-bottom: 30px;
+}
+
+.wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.wheel-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+}
+
+.wheel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #ffeb3b 0deg 45deg,
+        #ffc107 45deg 90deg,
+        #ff9800 90deg 135deg,
+        #ff5722 135deg 180deg,
+        #ffeb3b 180deg 225deg,
+        #ffc107 225deg 270deg,
+        #ff9800 270deg 315deg,
+        #ff5722 315deg 360deg
+    );
+    box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
+    transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    border: 12px solid #fff;
+    overflow: hidden;
+}
+
+.wheel-number {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #e65100;
+    border: 4px solid #ffc107;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid #ff9800;
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.6);
+}
+
+.wheel-center-circle {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #ffc107, #ff9800);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: #f44336;
+    z-index: 20;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: pointerPulse 2s infinite;
+}
+
+@keyframes pointerPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+.wheel-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.spin-button, .auto-spin-button {
+    padding: 16px 32px;
+    font-size: 18px;
+    font-family: 'ZCOOL XiaoWei', serif;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    min-width: 200px;
+}
+
+.spin-button {
+    background: linear-gradient(to right, #ffc107, #ff9800);
+    color: #5a3a00;
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+}
+
+.spin-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+}
+
+.auto-spin-button {
+    background: linear-gradient(to right, #4CAF50, #2E7D32);
+    color: white;
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+}
+
+.auto-spin-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.6);
+}
+
+/* 结果区域 */
+.result-section {
+    background-color: #fff9e6;
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid #ffc107;
+    margin-top: 20px;
+}
+
+.result-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.result-numbers {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: min-content;
+}
+
+.number-placeholder, .result-number {
+    flex: 0 0 auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    background-color: #fff;
+    border: 5px solid #ffc107;
+    color: #e65100;
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+}
+
+.result-number {
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.result-info {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+.latest-draw {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #ff9800;
+    margin-top: 20px;
+}
+
+.latest-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.latest-number {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ffc107, #ff9800);
+    color: white;
+    box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+}
+
+.draw-time {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    padding: 0 10px;
+}
+
 /* ===== DAILY RESULT SECTION ===== */
 .daily-result-section {
     background-color: #fffef5;
@@ -66,11 +431,12 @@ body {
     font-size: 20px;
 }
 
+/* Today Numbers - Responsive */
 .today-numbers {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin: 25px 0;
     flex-wrap: wrap;
 }
@@ -106,6 +472,7 @@ body {
 }
 
 .loading-dot {
+    flex: 0 0 auto;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -145,56 +512,7 @@ body {
 .result-status i {
     font-size: 20px;
 }
-@media (max-width: 480px) {
-    .today-number {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-    }
-    
-    .loading-dot {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .today-numbers, .loading-numbers {
-        gap: 10px;
-    }
-}
 
-@media (max-width: 380px) {
-    .today-number {
-        width: 55px;
-        height: 55px;
-        font-size: 26px;
-    }
-    
-    .loading-dot {
-        width: 55px;
-        height: 55px;
-    }
-    
-    .today-numbers, .loading-numbers {
-        gap: 8px;
-    }
-}
-
-@media (max-width: 320px) {
-    .today-number {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-    }
-    
-    .loading-dot {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .today-numbers, .loading-numbers {
-        gap: 6px;
-    }
-}
 /* Countdown Styles */
 .countdown-container {
     background: linear-gradient(135deg, #fff3e0, #ffe0b2);
@@ -209,6 +527,7 @@ body {
     justify-content: center;
     gap: 20px;
     margin: 30px 0;
+    flex-wrap: wrap;
 }
 
 .countdown-item {
@@ -495,422 +814,6 @@ body {
     color: #ff9800;
     font-weight: bold;
 }
-/* 头部样式 */
-header {
-    background: linear-gradient(to right, #ffc107, #ff9800);
-    color: #5a3a00;
-    padding: 20px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 5px solid #ff9800;
-}
-
-.logo-section {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.logo-circle {
-    width: 70px;
-    height: 70px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    color: #ff9800;
-    border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.logo-section h1 {
-    font-family: 'Ma Shan Zheng', cursive;
-    font-size: 42px;
-    font-weight: normal;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
-}
-
-.subtitle {
-    font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin-top: 5px;
-}
-
-.time-info {
-    text-align: right;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 15px;
-}
-
-.current-time, .next-draw {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.current-time i, .next-draw i {
-    font-size: 22px;
-}
-
-#current-time, #next-draw-time {
-    font-weight: bold;
-    color: #5a3a00;
-}
-
-/* 主内容区样式 */
-main {
-    padding: 25px;
-}
-
-section {
-    margin-bottom: 35px;
-}
-
-h2 {
-    font-family: 'Ma Shan Zheng', cursive;
-    font-size: 32px;
-    color: #e65100;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #ffc107;
-    padding-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-h3 {
-    font-size: 26px;
-    color: #ff9800;
-    margin-bottom: 15px;
-}
-
-h4 {
-    font-size: 22px;
-    color: #e65100;
-    margin-bottom: 15px;
-}
-
-/* 幸运之轮区域 - DIPERBAIKI */
-.fortune-wheel-section {
-    background-color: #fffef5;
-    padding: 25px;
-    border-radius: 20px;
-    border: 2px dashed #ffc107;
-    margin-bottom: 30px;
-}
-
-.wheel-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.wheel-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    margin: 0 auto;
-}
-
-.wheel {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 0deg,
-        #ffeb3b 0deg 45deg,
-        #ffc107 45deg 90deg,
-        #ff9800 90deg 135deg,
-        #ff5722 135deg 180deg,
-        #ffeb3b 180deg 225deg,
-        #ffc107 225deg 270deg,
-        #ff9800 270deg 315deg,
-        #ff5722 315deg 360deg
-    );
-    box-shadow: 0 10px 30px rgba(255, 152, 0, 0.4);
-    transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-    border: 12px solid #fff;
-    overflow: hidden;
-}
-
-/* Angka pada roda - DIPERBAIKI agar tersebar merata */
-.wheel-number {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #e65100;
-    border: 4px solid #ffc107;
-    top: 50%;
-    left: 50%;
-    transform-origin: center;
-    transform: translate(-50%, -50%) rotate(0deg);
-    z-index: 5;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.wheel-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background-color: #fff;
-    border-radius: 50%;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 6px solid #ff9800;
-    box-shadow: 0 0 20px rgba(255, 152, 0, 0.6);
-}
-
-.wheel-center-circle {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #ffc107, #ff9800);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 22px;
-}
-
-.wheel-pointer {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 40px;
-    color: #f44336;
-    z-index: 20;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: pointerPulse 2s infinite;
-}
-
-@keyframes pointerPulse {
-    0%, 100% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.1); }
-}
-
-.wheel-controls {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-}
-
-.spin-button, .auto-spin-button {
-    padding: 16px 32px;
-    font-size: 18px;
-    font-family: 'ZCOOL XiaoWei', serif;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    min-width: 200px;
-}
-
-.spin-button {
-    background: linear-gradient(to right, #ffc107, #ff9800);
-    color: #5a3a00;
-    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
-}
-
-.spin-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
-}
-
-.auto-spin-button {
-    background: linear-gradient(to right, #4CAF50, #2E7D32);
-    color: white;
-    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
-}
-
-.auto-spin-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.6);
-}
-
-/* 结果区域 - DIPERBAIKI untuk mobile */
-.result-section {
-    background-color: #fff9e6;
-    padding: 25px;
-    border-radius: 20px;
-    border: 2px solid #ffc107;
-    margin-top: 20px;
-}
-
-.result-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    overflow-x: auto;
-    padding: 10px 0;
-}
-
-.result-numbers {
-    display: flex;
-    gap: 20px;
-    margin: 25px 0;
-    justify-content: center;
-    flex-wrap: nowrap; /* Pastikan tetap sebaris di mobile */
-    min-width: min-content;
-}
-
-.number-placeholder, .result-number {
-     flex: 0 0 auto;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
-    background-color: #fff;
-    border: 5px solid #ffc107;
-    color: #e65100;
-    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
-}
-
-.result-number {
-    animation: popIn 0.5s ease;
-}
-
-@keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    70% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-.result-info {
-    text-align: center;
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 25px;
-    padding: 0 10px;
-}
-
-.latest-draw {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    border-left: 5px solid #ff9800;
-    margin-top: 20px;
-}
-
-.latest-numbers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-}
-
-.latest-number {
-    flex: 0 0 auto;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
-    background: linear-gradient(45deg, #ffc107, #ff9800);
-    color: white;
-    box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
-}
-/* Media queries untuk result numbers */
-@media (max-width: 480px) {
-    .number-placeholder, .result-number {
-        width: 60px;
-        height: 60px;
-        font-size: 28px;
-    }
-    
-    .latest-number {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-    }
-    
-    .result-numbers, .latest-numbers {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 380px) {
-    .number-placeholder, .result-number {
-        width: 55px;
-        height: 55px;
-        font-size: 26px;
-    }
-    
-    .latest-number {
-        width: 45px;
-        height: 45px;
-        font-size: 22px;
-    }
-    
-    .result-numbers, .latest-numbers {
-        gap: 8px;
-    }
-}
-
-@media (max-width: 320px) {
-    .number-placeholder, .result-number {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-    }
-    
-    .latest-number {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .result-numbers, .latest-numbers {
-        gap: 6px;
-    }
-}
-.draw-time {
-    text-align: center;
-    font-size: 18px;
-    color: #666;
-    padding: 0 10px;
-}
 
 /* 统计区域 */
 .statistics-section {
@@ -1129,7 +1032,7 @@ footer {
     color: white;
 }
 
-/* Responsive Design - DIPERBAIKI untuk mobile */
+/* Responsive Design */
 @media (max-width: 1100px) {
     .stats-container {
         grid-template-columns: 1fr;
@@ -1187,14 +1090,13 @@ footer {
     }
     
     .result-numbers {
-        gap: 15px;
+        gap: 10px;
         padding: 0 10px;
     }
     
     .number-placeholder, .result-number {
         width: 60px;
         height: 60px;
-        min-width: 60px;
         font-size: 28px;
     }
     
@@ -1202,6 +1104,11 @@ footer {
         width: 50px;
         height: 50px;
         font-size: 24px;
+    }
+    
+    .today-number, .loading-dot {
+        width: 60px;
+        height: 60px;
     }
     
     .info-cards {
@@ -1253,20 +1160,90 @@ footer {
         font-size: 18px;
     }
     
-    .result-numbers {
-        gap: 10px;
-    }
-    
     .number-placeholder, .result-number {
         width: 55px;
         height: 55px;
-        min-width: 55px;
         font-size: 26px;
+    }
+    
+    .latest-number {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+    
+    .today-number, .loading-dot {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .countdown-value {
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
     }
     
     .top-number {
         width: calc(50% - 15px);
         min-width: 70px;
+    }
+}
+
+@media (max-width: 380px) {
+    .number-placeholder, .result-number {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    .latest-number {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .today-number, .loading-dot {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .countdown-value {
+        width: 60px;
+        height: 60px;
+        font-size: 26px;
+    }
+    
+    .result-numbers, .latest-numbers, .today-numbers, .loading-numbers {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .number-placeholder, .result-number {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+    
+    .latest-number {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+    
+    .today-number, .loading-dot {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .countdown-value {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    
+    .result-numbers, .latest-numbers, .today-numbers, .loading-numbers {
+        gap: 6px;
     }
 }
 
