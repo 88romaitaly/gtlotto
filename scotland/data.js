@@ -3,14 +3,15 @@
 // Format: Keep only last 30 entries (oldest auto-removed)
 
 const scotlandLottoData = {
-    // Array of results - MAX 30 ENTRIES
-    // Draw time: 11:30 GMT (18:30 WIB converted)
     results: [
-        // New entries go at the TOP
         // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "18:57" }
-        
-        // December 2025
+
         {
+            date: "2025-01-01",
+            draw: 231,
+            numbers: [2, 9, 4, 6],
+            time: "18:30"
+        },{
             date: "2025-12-31",
             draw: 230,
             numbers: [1, 8, 0, 8],
@@ -182,12 +183,6 @@ const scotlandLottoData = {
             date: "2025-12-03",
             draw: 202,
             numbers: [0, 8, 6, 9],
-            time: "18:30"
-        },
-        {
-            date: "2025-12-02",
-            draw: 201,
-            numbers: [5, 2, 8, 1],
             time: "18:30"
         }
         // IMPORTANT: Keep only 30 entries maximum
