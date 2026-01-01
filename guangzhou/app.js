@@ -12,7 +12,12 @@ const topNumbersListElement = document.getElementById('top-numbers-list');
 const totalDrawsElement = document.getElementById('total-draws');
 const lastUpdateElement = document.getElementById('last-update');
 
-// 变量
+// Variabel untuk history section
+let currentHistoryPage = 1;
+const historyPageSize = 10;
+let currentFilterDays = 7;
+
+// Variabel umum
 let isSpinning = false;
 let isAutoSpinning = false;
 let spinCount = 0;
@@ -26,6 +31,12 @@ function initApp() {
     displayLatestDraw();
     updateStatsDisplay();
     
+    // TAMBAHAN BARU: Inisialisasi fitur baru
+    updateTodayResult();
+    initCountdown();
+    loadHistoryData();
+    initHistoryControls();
+    
     // 检查并生成今日开奖结果
     checkAndGenerateDailyResult();
     
@@ -33,7 +44,7 @@ function initApp() {
     setInterval(updateCurrentTime, 1000);
     
     // 设置定时器检查开奖时间
-    setInterval(checkDrawTime, 60000);
+    setInterval(checkDrawTime, 1000); // Ubah ke 1 detik untuk countdown
     
     // 事件监听器
     spinButton.addEventListener('click', spinWheel);
@@ -42,6 +53,8 @@ function initApp() {
     // 初始显示
     displayPlaceholderNumbers();
 }
+
+// ===== FORTUNE WHEEL FUNCTIONS =====
 
 // 创建转盘数字 - DIPERBAIKI agar angka tersebar merata
 function createWheelNumbers() {
@@ -95,187 +108,6 @@ function createWheelNumbers() {
         
         fortuneWheel.appendChild(wheelNumber);
     });
-}
-
-// 更新当前时间
-function updateCurrentTime() {
-    const now = new Date();
-    
-    // 转换为广州时间 (GMT+8)
-    const guangzhouTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
-    
-    const timeString = guangzhouTime.toLocaleString('zh-CN', {
-        timeZone: 'Asia/Shanghai',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-    
-    currentTimeElement.textContent = `广州时间: ${timeString}`;
-}
-
-// 更新下次开奖时间
-function updateNextDrawTime() {
-    const now = new Date();
-    const today = now.toISOString().split('T')[0];
-    
-    // 开奖时间: 16:30 GMT+8 = 08:30 GMT+0
-    const drawTimeUTC = new Date(`${today}T08:30:00Z`);
-    
-    // 如果当前时间已经过了今天的开奖时间，显示明天的开奖时间
-    if (now > drawTimeUTC) {
-        drawTimeUTC.setDate(drawTimeUTC.getDate() + 1);
-    }
-    
-    // 转换为广州时间显示
-    const guangzhouDrawTime = new Date(drawTimeUTC.getTime() + 8 * 60 * 60 * 1000);
-    
-    const timeString = guangzhouDrawTime.toLocaleString('zh-CN', {
-        timeZone: 'Asia/Shanghai',
-        month: '2-digit',
-        day: '2-digit',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit'
-    }).split(' ')[1];
-    
-    nextDrawTimeElement.textContent = `16:30 (GMT+8)`;
-}
-
-// 检查开奖时间
-function checkDrawTime() {
-    const now = new Date();
-    const drawHour = guangzhouLottoData.drawTime.hour;
-    const drawMinute = guangzhouLottoData.drawTime.minute;
-    
-    // 如果当前时间是开奖时间 (GMT+0)
-    if (now.getUTCHours() === drawHour && now.getUTCMinutes() === drawMinute) {
-        // 生成今日开奖结果
-        const todayNumbers = checkAndGenerateDailyResult();
-        
-        if (todayNumbers) {
-            // 更新显示
-            displayLatestDraw();
-            updateStatsDisplay();
-            
-            // 显示通知
-            showNotification(`今日开奖结果已生成: ${todayNumbers.join(', ')}`);
-        }
-    }
-}
-
-// 显示最新开奖结果
-function displayLatestDraw() {
-    const latestDraw = getLatestDraw();
-    
-    if (latestDraw) {
-        latestNumbersElement.innerHTML = '';
-        
-        latestDraw.numbers.forEach(number => {
-            const numberElement = document.createElement('div');
-            numberElement.className = 'latest-number';
-            numberElement.textContent = number;
-            latestNumbersElement.appendChild(numberElement);
-        });
-        
-        // 显示开奖时间
-        const drawDate = new Date(latestDraw.date);
-        const drawTimeString = drawDate.toLocaleDateString('zh-CN', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
-        });
-        
-        latestDrawTimeElement.textContent = `开奖时间: ${drawTimeString} 16:30`;
-    }
-}
-
-// 更新统计显示
-function updateStatsDisplay() {
-    // 更新总开奖次数
-    totalDrawsElement.textContent = guangzhouLottoData.drawHistory.length;
-    
-    // 更新最后更新时间
-    lastUpdateElement.textContent = guangzhouLottoData.lastUpdated;
-    
-    // 更新频率图表
-    updateFrequencyChart();
-    
-    // 更新热门号码
-    updateTopNumbers();
-}
-
-// 更新频率图表
-function updateFrequencyChart() {
-    frequencyChartElement.innerHTML = '';
-    
-    // 获取最大出现次数用于计算比例
-    const maxCount = Math.max(...Object.values(guangzhouLottoData.numberStats));
-    
-    for (let i = 0; i <= 9; i++) {
-        const count = guangzhouLottoData.numberStats[i] || 0;
-        const barHeight = maxCount > 0 ? (count / maxCount) * 100 : 0;
-        
-        const barContainer = document.createElement('div');
-        barContainer.className = 'bar-container';
-        
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.height = `${barHeight}%`;
-        bar.title = `数字 ${i}: 出现 ${count} 次`;
-        
-        const barLabel = document.createElement('div');
-        barLabel.className = 'bar-label';
-        barLabel.textContent = i;
-        
-        barContainer.appendChild(bar);
-        barContainer.appendChild(barLabel);
-        frequencyChartElement.appendChild(barContainer);
-    }
-}
-
-// 更新热门号码
-function updateTopNumbers() {
-    topNumbersListElement.innerHTML = '';
-    
-    const topNumbers = getTopNumbers(4);
-    
-    topNumbers.forEach((item, index) => {
-        const topNumberElement = document.createElement('div');
-        topNumberElement.className = 'top-number';
-        
-        // Tambahkan class berdasarkan ranking
-        if (index === 0) {
-            topNumberElement.classList.add('first');
-        } else if (index === 1) {
-            topNumberElement.classList.add('second');
-        } else if (index === 2) {
-            topNumberElement.classList.add('third');
-        }
-        
-        topNumberElement.innerHTML = `
-            <div class="top-number-value">${item.number}</div>
-            <div class="top-number-count">出现 ${item.count} 次</div>
-        `;
-        
-        topNumbersListElement.appendChild(topNumberElement);
-    });
-}
-
-// 显示占位符号码
-function displayPlaceholderNumbers() {
-    resultNumbers.innerHTML = '';
-    
-    for (let i = 0; i < 4; i++) {
-        const placeholder = document.createElement('div');
-        placeholder.className = 'number-placeholder';
-        placeholder.textContent = '?';
-        resultNumbers.appendChild(placeholder);
-    }
 }
 
 // 旋转转盘 - DIPERBAIKI
@@ -358,8 +190,573 @@ function toggleAutoSpin() {
     }
 }
 
+// 显示占位符号码
+function displayPlaceholderNumbers() {
+    resultNumbers.innerHTML = '';
+    
+    for (let i = 0; i < 4; i++) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'number-placeholder';
+        placeholder.textContent = '?';
+        resultNumbers.appendChild(placeholder);
+    }
+}
+
+// ===== TIME & DRAW FUNCTIONS =====
+
+// 更新当前时间
+function updateCurrentTime() {
+    const now = new Date();
+    
+    // 转换为广州时间 (GMT+8)
+    const guangzhouTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+    
+    const timeString = guangzhouTime.toLocaleString('zh-CN', {
+        timeZone: 'Asia/Shanghai',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    
+    currentTimeElement.textContent = `广州时间: ${timeString}`;
+}
+
+// 更新下次开奖时间
+function updateNextDrawTime() {
+    const now = new Date();
+    const today = now.toISOString().split('T')[0];
+    
+    // 开奖时间: 16:30 GMT+8 = 08:30 GMT+0
+    const drawTimeUTC = new Date(`${today}T08:30:00Z`);
+    
+    // 如果当前时间已经过了今天的开奖时间，显示明天的开奖时间
+    if (now > drawTimeUTC) {
+        drawTimeUTC.setDate(drawTimeUTC.getDate() + 1);
+    }
+    
+    // 转换为广州时间显示
+    const guangzhouDrawTime = new Date(drawTimeUTC.getTime() + 8 * 60 * 60 * 1000);
+    
+    const timeString = guangzhouDrawTime.toLocaleString('zh-CN', {
+        timeZone: 'Asia/Shanghai',
+        month: '2-digit',
+        day: '2-digit',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit'
+    }).split(' ')[1];
+    
+    nextDrawTimeElement.textContent = `16:30 (GMT+8)`;
+}
+
+// 检查开奖时间
+function checkDrawTime() {
+    updateCountdown(); // Panggil countdown setiap detik
+    
+    const now = new Date();
+    const drawHour = guangzhouLottoData.drawTime.hour;
+    const drawMinute = guangzhouLottoData.drawTime.minute;
+    
+    // 如果当前时间是开奖时间 (GMT+0)
+    if (now.getUTCHours() === drawHour && now.getUTCMinutes() === drawMinute) {
+        // 生成今日开奖结果
+        const todayNumbers = checkAndGenerateDailyResult();
+        
+        if (todayNumbers) {
+            // 更新显示
+            displayLatestDraw();
+            updateStatsDisplay();
+            updateTodayResult();
+            
+            // 显示通知
+            showNotification(`今日开奖结果已生成: ${todayNumbers.join(', ')}`);
+        }
+    }
+}
+
+// 显示最新开奖结果
+function displayLatestDraw() {
+    const latestDraw = getLatestDraw();
+    
+    if (latestDraw) {
+        latestNumbersElement.innerHTML = '';
+        
+        latestDraw.numbers.forEach(number => {
+            const numberElement = document.createElement('div');
+            numberElement.className = 'latest-number';
+            numberElement.textContent = number;
+            latestNumbersElement.appendChild(numberElement);
+        });
+        
+        // 显示开奖时间
+        const drawDate = new Date(latestDraw.date);
+        const drawTimeString = drawDate.toLocaleDateString('zh-CN', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+        });
+        
+        latestDrawTimeElement.textContent = `开奖时间: ${drawTimeString} 16:30`;
+    }
+}
+
+// ===== STATISTICS FUNCTIONS =====
+
+// 更新统计显示
+function updateStatsDisplay() {
+    // 更新总开奖次数
+    totalDrawsElement.textContent = guangzhouLottoData.drawHistory.length;
+    
+    // 更新最后更新时间
+    lastUpdateElement.textContent = guangzhouLottoData.lastUpdated;
+    
+    // 更新频率图表
+    updateFrequencyChart();
+    
+    // 更新热门号码
+    updateTopNumbers();
+}
+
+// 更新频率图表
+function updateFrequencyChart() {
+    frequencyChartElement.innerHTML = '';
+    
+    // 获取最大出现次数用于计算比例
+    const maxCount = Math.max(...Object.values(guangzhouLottoData.numberStats));
+    
+    for (let i = 0; i <= 9; i++) {
+        const count = guangzhouLottoData.numberStats[i] || 0;
+        const barHeight = maxCount > 0 ? (count / maxCount) * 100 : 0;
+        
+        const barContainer = document.createElement('div');
+        barContainer.className = 'bar-container';
+        
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = `${barHeight}%`;
+        bar.title = `数字 ${i}: 出现 ${count} 次`;
+        
+        const barLabel = document.createElement('div');
+        barLabel.className = 'bar-label';
+        barLabel.textContent = i;
+        
+        barContainer.appendChild(bar);
+        barContainer.appendChild(barLabel);
+        frequencyChartElement.appendChild(barContainer);
+    }
+}
+
+// 更新热门号码
+function updateTopNumbers() {
+    topNumbersListElement.innerHTML = '';
+    
+    const topNumbers = getTopNumbers(4);
+    
+    topNumbers.forEach((item, index) => {
+        const topNumberElement = document.createElement('div');
+        topNumberElement.className = 'top-number';
+        
+        // Tambahkan class berdasarkan ranking
+        if (index === 0) {
+            topNumberElement.classList.add('first');
+        } else if (index === 1) {
+            topNumberElement.classList.add('second');
+        } else if (index === 2) {
+            topNumberElement.classList.add('third');
+        }
+        
+        topNumberElement.innerHTML = `
+            <div class="top-number-value">${item.number}</div>
+            <div class="top-number-count">出现 ${item.count} 次</div>
+        `;
+        
+        topNumbersListElement.appendChild(topNumberElement);
+    });
+}
+
+// ===== DAILY RESULT FUNCTIONS =====
+
+function updateTodayResult() {
+    const todayDateElement = document.getElementById('today-date');
+    const todayNumbersElement = document.getElementById('today-numbers');
+    const resultStatusElement = document.getElementById('result-status');
+    
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+    
+    // Update tanggal
+    todayDateElement.textContent = todayStr;
+    
+    // Cek apakah sudah ada result hari ini
+    const todayResult = guangzhouLottoData.todayResult;
+    const todayDraw = guangzhouLottoData.drawHistory.find(draw => draw.date === todayStr);
+    
+    if (todayResult || todayDraw) {
+        const numbers = todayResult || todayDraw.numbers;
+        
+        todayNumbersElement.innerHTML = '';
+        numbers.forEach(number => {
+            const numberElement = document.createElement('div');
+            numberElement.className = 'today-number';
+            numberElement.textContent = number;
+            todayNumbersElement.appendChild(numberElement);
+        });
+        
+        resultStatusElement.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span>已开奖 - ${todayStr} 16:30</span>
+        `;
+        resultStatusElement.style.color = '#4CAF50';
+    } else {
+        // Tampilkan loading animation
+        todayNumbersElement.innerHTML = `
+            <div class="loading-numbers">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+            <p class="loading-text">等待开奖中...</p>
+        `;
+        
+        resultStatusElement.innerHTML = `
+            <i class="fas fa-clock"></i>
+            <span>开奖时间: 16:30 (GMT+8)</span>
+        `;
+        resultStatusElement.style.color = '#e65100';
+    }
+}
+
+// ===== COUNTDOWN FUNCTIONS =====
+
+function initCountdown() {
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+function updateCountdown() {
+    const now = new Date();
+    const today = now.toISOString().split('T')[0];
+    
+    // Waktu draw hari ini 16:30 GMT+8 = 08:30 GMT+0
+    let drawTime = new Date(`${today}T08:30:00Z`);
+    
+    // Jika sudah lewat waktu draw hari ini, targetkan besok
+    if (now > drawTime) {
+        const tomorrow = new Date(now);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowStr = tomorrow.toISOString().split('T')[0];
+        drawTime = new Date(`${tomorrowStr}T08:30:00Z`);
+    }
+    
+    const diff = drawTime - now;
+    
+    // Jika sudah waktunya draw
+    if (diff <= 0) {
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        
+        // Cek dan generate result
+        const todayNumbers = checkAndGenerateDailyResult();
+        if (todayNumbers) {
+            updateTodayResult();
+            displayLatestDraw();
+            updateStatsDisplay();
+            showNotification(`今日开奖结果已生成: ${todayNumbers.join(', ')}`);
+            
+            // Refresh history data
+            loadHistoryData();
+        }
+        return;
+    }
+    
+    // Hitung jam, menit, detik
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update display
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// ===== HISTORY FUNCTIONS =====
+
+function initHistoryControls() {
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentFilterDays = parseInt(this.dataset.days);
+            currentHistoryPage = 1;
+            loadHistoryData();
+        });
+    });
+    
+    // Search button
+    document.getElementById('search-btn').addEventListener('click', searchHistory);
+    document.getElementById('history-search').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') searchHistory();
+    });
+    
+    // Pagination buttons
+    document.getElementById('prev-page').addEventListener('click', () => {
+        if (currentHistoryPage > 1) {
+            currentHistoryPage--;
+            loadHistoryData();
+        }
+    });
+    
+    document.getElementById('next-page').addEventListener('click', () => {
+        const totalPages = Math.ceil(getFilteredHistory().length / historyPageSize);
+        if (currentHistoryPage < totalPages) {
+            currentHistoryPage++;
+            loadHistoryData();
+        }
+    });
+}
+
+function getFilteredHistory() {
+    let filtered = [...guangzhouLottoData.drawHistory];
+    
+    // Filter berdasarkan hari
+    if (currentFilterDays > 0) {
+        const cutoffDate = new Date();
+        cutoffDate.setDate(cutoffDate.getDate() - currentFilterDays);
+        filtered = filtered.filter(draw => new Date(draw.date) >= cutoffDate);
+    }
+    
+    // Filter berdasarkan search
+    const searchTerm = document.getElementById('history-search').value.trim();
+    if (searchTerm) {
+        filtered = filtered.filter(draw => draw.date.includes(searchTerm));
+    }
+    
+    // Urutkan dari yang terbaru
+    return filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function loadHistoryData() {
+    const filteredHistory = getFilteredHistory();
+    const totalPages = Math.ceil(filteredHistory.length / historyPageSize);
+    
+    // Update pagination info
+    document.getElementById('current-page').textContent = currentHistoryPage;
+    document.getElementById('total-pages').textContent = totalPages || 1;
+    
+    // Enable/disable pagination buttons
+    document.getElementById('prev-page').disabled = currentHistoryPage <= 1;
+    document.getElementById('next-page').disabled = currentHistoryPage >= totalPages;
+    
+    // Get data for current page
+    const startIndex = (currentHistoryPage - 1) * historyPageSize;
+    const endIndex = startIndex + historyPageSize;
+    const pageData = filteredHistory.slice(startIndex, endIndex);
+    
+    // Render table
+    renderHistoryTable(pageData, startIndex);
+    
+    // Update summary
+    updateHistorySummary(filteredHistory);
+}
+
+function renderHistoryTable(data, startIndex) {
+    const tbody = document.getElementById('history-table-body');
+    tbody.innerHTML = '';
+    
+    if (data.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 40px;">
+                    <i class="fas fa-inbox" style="font-size: 48px; color: #ffc107; margin-bottom: 15px;"></i>
+                    <p style="font-size: 18px; color: #666;">没有找到开奖记录</p>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    data.forEach((draw, index) => {
+        const row = document.createElement('tr');
+        const globalIndex = startIndex + index + 1;
+        
+        // Hitung lucky star (angka yang paling sering muncul dalam draw ini)
+        const numberCounts = {};
+        draw.numbers.forEach(num => {
+            numberCounts[num] = (numberCounts[num] || 0) + 1;
+        });
+        const maxCount = Math.max(...Object.values(numberCounts));
+        const luckyNumbers = Object.keys(numberCounts).filter(num => numberCounts[num] === maxCount);
+        
+        row.innerHTML = `
+            <td>${globalIndex}</td>
+            <td><strong>${draw.date}</strong></td>
+            <td>
+                ${draw.numbers.map(num => `<span class="history-number">${num}</span>`).join('')}
+            </td>
+            <td>
+                ${luckyNumbers.map(num => `<i class="fas fa-star lucky-star" title="幸运数字: ${num}"></i>`).join('')}
+            </td>
+            <td>
+                <button class="view-btn" onclick="viewDrawDetail('${draw.date}')">
+                    <i class="fas fa-eye"></i> 查看详情
+                </button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function searchHistory() {
+    currentHistoryPage = 1;
+    loadHistoryData();
+}
+
+function updateHistorySummary(data) {
+    if (data.length === 0) {
+        document.getElementById('total-draw-count').textContent = '0';
+        document.getElementById('earliest-draw').textContent = '--';
+        document.getElementById('latest-draw').textContent = '--';
+        document.getElementById('hottest-number').textContent = '--';
+        document.getElementById('hottest-count').textContent = '0';
+        document.getElementById('avg-frequency').textContent = '0%';
+        document.getElementById('odd-percentage').textContent = '0%';
+        document.getElementById('even-percentage').textContent = '0%';
+        document.getElementById('repeat-count').textContent = '0';
+        return;
+    }
+    
+    // Update basic stats
+    document.getElementById('total-draw-count').textContent = data.length;
+    document.getElementById('earliest-draw').textContent = data[data.length - 1].date;
+    document.getElementById('latest-draw').textContent = data[0].date;
+    
+    // Hitung angka terpanas
+    const numberStats = {};
+    data.forEach(draw => {
+        draw.numbers.forEach(num => {
+            numberStats[num] = (numberStats[num] || 0) + 1;
+        });
+    });
+    
+    const hottestNumber = Object.keys(numberStats).reduce((a, b) => 
+        numberStats[a] > numberStats[b] ? a : b
+    );
+    const hottestCount = numberStats[hottestNumber];
+    const avgFrequency = ((hottestCount / (data.length * 4)) * 100).toFixed(1);
+    
+    document.getElementById('hottest-number').textContent = hottestNumber;
+    document.getElementById('hottest-count').textContent = hottestCount;
+    document.getElementById('avg-frequency').textContent = `${avgFrequency}%`;
+    
+    // Hitung distribusi ganjil/genap
+    let oddCount = 0, evenCount = 0;
+    data.forEach(draw => {
+        draw.numbers.forEach(num => {
+            if (num % 2 === 0) evenCount++;
+            else oddCount++;
+        });
+    });
+    
+    const totalNumbers = data.length * 4;
+    const oddPercentage = ((oddCount / totalNumbers) * 100).toFixed(1);
+    const evenPercentage = ((evenCount / totalNumbers) * 100).toFixed(1);
+    
+    document.getElementById('odd-percentage').textContent = `${oddPercentage}%`;
+    document.getElementById('even-percentage').textContent = `${evenPercentage}%`;
+    
+    // Hitung angka berulang
+    let repeatCount = 0;
+    data.forEach(draw => {
+        const uniqueNumbers = new Set(draw.numbers);
+        if (uniqueNumbers.size < 4) {
+            repeatCount++;
+        }
+    });
+    
+    document.getElementById('repeat-count').textContent = repeatCount;
+}
+
+function viewDrawDetail(date) {
+    const draw = guangzhouLottoData.drawHistory.find(d => d.date === date);
+    if (!draw) return;
+    
+    const detailHtml = `
+        <div style="text-align: center; padding: 20px;">
+            <h3 style="color: #e65100; margin-bottom: 20px;">开奖详情 - ${draw.date}</h3>
+            <div style="display: flex; justify-content: center; gap: 15px; margin: 25px 0;">
+                ${draw.numbers.map(num => `
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, #ffc107, #ff9800); 
+                         display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; font-weight: bold;">
+                        ${num}
+                    </div>
+                `).join('')}
+            </div>
+            <p style="color: #666; margin-bottom: 15px;"><strong>开奖时间:</strong> 16:30 (GMT+8)</p>
+            <p style="color: #666; margin-bottom: 15px;"><strong>开奖类型:</strong> 日常开奖</p>
+            <p style="color: #666; margin-bottom: 25px;"><strong>开奖状态:</strong> 已完成</p>
+            <button onclick="this.parentElement.parentElement.remove()" 
+                    style="padding: 10px 25px; background: #ff9800; color: white; border: none; border-radius: 25px; cursor: pointer;">
+                关闭
+            </button>
+        </div>
+    `;
+    
+    // Buat modal sederhana
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    `;
+    
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: white;
+        padding: 0;
+        border-radius: 15px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        border: 3px solid #ffc107;
+    `;
+    
+    modalContent.innerHTML = detailHtml;
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+    
+    // Tutup modal ketika klik di luar
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            document.body.removeChild(modal);
+        }
+    });
+}
+
+// ===== HELPER FUNCTIONS =====
+
 // 显示通知
 function showNotification(message) {
+    // 检查是否 sudah ada notification
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
     // 创建通知元素
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -375,5 +772,19 @@ function showNotification(message) {
     }, 5000);
 }
 
+// 生成随机号码 (4个数字，范围0-9)
+function generateRandomNumbers() {
+    const numbers = [];
+    for (let i = 0; i < 4; i++) {
+        numbers.push(Math.floor(Math.random() * 10));
+    }
+    return numbers;
+}
+
+// ===== EVENT LISTENERS =====
+
 // 初始化应用
 document.addEventListener('DOMContentLoaded', initApp);
+
+// Export fungsi untuk digunakan di global scope
+window.viewDrawDetail = viewDrawDetail;
