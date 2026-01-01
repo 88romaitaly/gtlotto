@@ -85,7 +85,7 @@ const guangzhouLottoData = {
     
     // 开奖时间设置 (16:30 GMT+8, 对应 08:30 GMT+0)
     drawTime: {
-        hour: 8,    // GMT+0 小时
+        hour: 16,    // GMT+0 小时
         minute: 30  // GMT+0 分钟
     }
 };
