@@ -33,6 +33,128 @@
         </header>
 
         <main>
+            <!-- Tambahkan setelah section fortune-wheel-section dan sebelum statistics-section -->
+<section class="daily-result-section">
+    <h2><i class="fas fa-calendar-check"></i> 今日开奖结果</h2>
+    
+    <div class="today-result-container">
+        <div class="today-result-card">
+            <div class="result-date">
+                <i class="fas fa-calendar-day"></i>
+                <span id="today-date">2023-10-21</span>
+            </div>
+            <h3>今日幸运号码</h3>
+            <div class="today-numbers" id="today-numbers">
+                <div class="loading-numbers">
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                </div>
+                <p class="loading-text">等待开奖中...</p>
+            </div>
+            <div class="result-status" id="result-status">
+                <i class="fas fa-clock"></i>
+                <span>开奖时间: 16:30 (GMT+8)</span>
+            </div>
+        </div>
+        
+        <div class="countdown-container">
+            <h3>距离下次开奖</h3>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">小时</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">分钟</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">秒</span>
+                </div>
+            </div>
+            <p class="countdown-info">每天下午4:30准时开奖</p>
+        </div>
+    </div>
+</section>
+
+<section class="history-section">
+    <h2><i class="fas fa-history"></i> 历史开奖记录</h2>
+    
+    <div class="history-controls">
+        <div class="history-filter">
+            <button class="filter-btn active" data-days="7">最近7天</button>
+            <button class="filter-btn" data-days="30">最近30天</button>
+            <button class="filter-btn" data-days="90">最近90天</button>
+            <button class="filter-btn" data-days="0">全部记录</button>
+        </div>
+        <div class="history-search">
+            <input type="text" id="history-search" placeholder="搜索日期 (YYYY-MM-DD)">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    
+    <div class="history-table-container">
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>开奖日期</th>
+                    <th>开奖号码</th>
+                    <th>幸运数字</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="history-table-body">
+                <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="history-pagination">
+        <button id="prev-page" class="page-btn" disabled>
+            <i class="fas fa-chevron-left"></i> 上一页
+        </button>
+        <span class="page-info">
+            第 <span id="current-page">1</span> 页 / 共 <span id="total-pages">1</span> 页
+        </span>
+        <button id="next-page" class="page-btn">
+            下一页 <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+    
+    <div class="history-summary">
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h4>统计摘要</h4>
+            <p>总开奖次数: <span id="total-draw-count">0</span></p>
+            <p>最早记录: <span id="earliest-draw">--</span></p>
+            <p>最近记录: <span id="latest-draw">--</span></p>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <h4>本期热门</h4>
+            <p>最热号码: <span id="hottest-number">--</span></p>
+            <p>出现次数: <span id="hottest-count">0</span></p>
+            <p>平均频率: <span id="avg-frequency">0%</span></p>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fas fa-dice"></i>
+            </div>
+            <h4>号码分布</h4>
+            <p>奇数出现率: <span id="odd-percentage">0%</span></p>
+            <p>偶数出现率: <span id="even-percentage">0%</span></p>
+            <p>重复次数: <span id="repeat-count">0</span></p>
+        </div>
+    </div>
+</section>
             <section class="fortune-wheel-section">
                 <h2><i class="fas fa-yin-yang"></i> 幸运之轮</h2>
                 <div class="wheel-container">
