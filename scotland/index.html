@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scotland Lotto - Official Draw Results</title>
-    <meta name="robots" content="noindex">
+        <meta name="robots" content="noindex">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -79,6 +79,11 @@
                         <div class="time-value" id="countdown-seconds">00</div>
                         <div class="time-label">SECONDS</div>
                     </div>
+                </div>
+                
+                <div class="next-draw-info">
+                    <i class="fas fa-calendar-day"></i>
+                    <span>Next Draw: <strong id="nextDrawDate">-- -- ----</strong> at <strong>11:30 GMT</strong></span>
                 </div>
             </div>
         </section>
@@ -163,6 +168,9 @@
         <section class="recent-section">
             <div class="section-title">
                 <h2><i class="fas fa-list-ol"></i> RECENT DRAW RESULTS</h2>
+                <div class="table-info">
+                    Showing last <span id="showCount">30</span> draws
+                </div>
             </div>
             
             <div class="table-container">
@@ -197,7 +205,7 @@
                 </div>
                 <button class="view-all" onclick="toggleViewAll()">
                     <i class="fas fa-expand"></i>
-                    <span>VIEW HISTORY</span>
+                    <span>VIEW ALL 30 DRAWS</span>
                 </button>
             </div>
         </section>
@@ -225,7 +233,7 @@
                     <div class="link-group">
                         <h4>Contact</h4>
                         <a href="#"><i class="fas fa-envelope"></i> support@scotlandlotto.com</a>
-                        <a href="#"><i class="fas fa-phone"></i> +44 131 128 9988</a>
+                        <a href="#"><i class="fas fa-phone"></i> +44 131 123 4567</a>
                         <a href="#"><i class="fas fa-map-pin"></i> Edinburgh, UK</a>
                     </div>
                 </div>
