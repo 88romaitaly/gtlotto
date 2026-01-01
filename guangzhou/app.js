@@ -216,23 +216,43 @@ function updateCurrentTime() {
 function updateNextDrawTime() {
     const now = new Date();
     const guangzhouTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
-    const today = guangzhouTime.toISOString().split('T')[0];
+    const guangzhouDateStr = guangzhouTime.toISOString().split('T')[0];
     
     // Waktu draw hari ini 00:30 GMT+8
-    const drawTimeGuangzhou = new Date(`${today}T00:30:00+08:00`);
+    const drawTimeToday = new Date(`${guangzhouDateStr}T00:30:00+08:00`);
     
-    // Jika sudah lewat waktu draw hari ini, tampilkan besok
-    if (guangzhouTime >= drawTimeGuangzhou) {
-        const tomorrow = new Date(guangzhouTime);
+    let nextDrawTime;
+    let nextDrawText;
+    
+    // Jika sekarang sudah melewati draw hari ini
+    if (guangzhouTime >= drawTimeToday) {
+        // Draw berikutnya adalah besok
+        const tomorrow = new Date(drawTimeToday);
         tomorrow.setDate(tomorrow.getDate() + 1);
-        const tomorrowStr = tomorrow.toISOString().split('T')[0];
-        
-        nextDrawTimeElement.textContent = `00:30 (GMT+8) 明天`;
-        nextDrawTimeElement.innerHTML = `00:30 (GMT+8) <span style="color:#ff9800;font-weight:bold">明天</span>`;
+        nextDrawTime = tomorrow;
+        nextDrawText = "明天 (明日)";
     } else {
-        nextDrawTimeElement.textContent = `00:30 (GMT+8) 今天`;
-        nextDrawTimeElement.innerHTML = `00:30 (GMT+8) <span style="color:#4CAF50;font-weight:bold">今天</span>`;
+        // Draw berikutnya adalah hari ini
+        nextDrawTime = drawTimeToday;
+        nextDrawText = "今天 (今日)";
     }
+    
+    // Format waktu untuk display
+    const drawTimeFormatted = nextDrawTime.toLocaleString('zh-CN', {
+        timeZone: 'Asia/Shanghai',
+        month: '2-digit',
+        day: '2-digit',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit'
+    }).split(' ')[1];
+    
+    // Update element dengan styling yang lebih baik
+    nextDrawTimeElement.innerHTML = `
+        <span style="color: #e65100; font-weight: bold;">下次开奖:</span>
+        <span style="color: #ff9800; font-weight: bold;">${drawTimeFormatted} (GMT+8)</span>
+        <span style="color: #4CAF50; font-weight: bold;">${nextDrawText}</span>
+    `;
 }
 
 // 检查开奖时间
@@ -410,31 +430,61 @@ function updateTodayResult() {
 // ===== COUNTDOWN FUNCTIONS =====
 
 function initCountdown() {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    updateCountdownSimple();
+    setInterval(updateCountdownSimple, 1000);
 }
 
-function updateCountdown() {
+function updateCountdownSimple() {
     const now = new Date();
-    const guangzhouTime = new Date(now.getTime() + 8 * 60 * 60 * 1000);
-    const today = guangzhouTime.toISOString().split('T')[0];
     
-    let drawTimeGuangzhou = new Date(`${today}T00:30:00+08:00`);
+    // Konversi ke waktu Guangzhou (GMT+8)
+    const guangzhouOffset = 8 * 60 * 60 * 1000; // 8 jam dalam milidetik
+    const guangzhouTime = new Date(now.getTime() + guangzhouOffset);
     
-    if (guangzhouTime >= drawTimeGuangzhou) {
-        const tomorrow = new Date(guangzhouTime);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const tomorrowStr = tomorrow.toISOString().split('T')[0];
-        drawTimeGuangzhou = new Date(`${tomorrowStr}T00:30:00+08:00`);
+    // Dapatkan jam dan menit Guangzhou
+    const guangzhouHours = guangzhouTime.getUTCHours();
+    const guangzhouMinutes = guangzhouTime.getUTCMinutes();
+    const guangzhouSeconds = guangzhouTime.getUTCSeconds();
+    
+    // Hitung waktu hingga 00:30 berikutnya
+    let hoursToNextDraw, minutesToNextDraw, secondsToNextDraw;
+    
+    if (guangzhouHours < 0 || (guangzhouHours === 0 && guangzhouMinutes < 30)) {
+        // Jika sebelum 00:30, countdown ke 00:30 hari ini
+        hoursToNextDraw = 0 - guangzhouHours;
+        minutesToNextDraw = 30 - guangzhouMinutes;
+    } else {
+        // Jika setelah 00:30, countdown ke 00:30 besok
+        hoursToNextDraw = 24 - guangzhouHours;
+        minutesToNextDraw = 30 - guangzhouMinutes;
+        
+        // Adjust jika minutes negatif
+        if (minutesToNextDraw < 0) {
+            hoursToNextDraw -= 1;
+            minutesToNextDraw += 60;
+        }
     }
     
-    const diff = drawTimeGuangzhou - guangzhouTime;
+    // Adjust seconds
+    secondsToNextDraw = 60 - guangzhouSeconds;
+    if (secondsToNextDraw === 60) {
+        secondsToNextDraw = 0;
+        minutesToNextDraw += 1;
+    }
     
-    if (diff <= 0) {
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = '00';
-        
+    // Adjust jika minutes menjadi 60
+    if (minutesToNextDraw === 60) {
+        hoursToNextDraw += 1;
+        minutesToNextDraw = 0;
+    }
+    
+    // Update display
+    document.getElementById('hours').textContent = hoursToNextDraw.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutesToNextDraw.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = secondsToNextDraw.toString().padStart(2, '0');
+    
+    // Jika countdown mencapai 00:00:00, generate result
+    if (hoursToNextDraw === 0 && minutesToNextDraw === 0 && secondsToNextDraw === 0) {
         const todayNumbers = checkAndGenerateDailyResult();
         if (todayNumbers) {
             updateTodayResult();
@@ -443,17 +493,34 @@ function updateCountdown() {
             showNotification(`今日开奖结果已生成: ${todayNumbers.join(', ')}`);
             loadHistoryData();
         }
-        return;
     }
     
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    // Update next draw time text
+    updateNextDrawTimeSimple();
 }
+
+function updateNextDrawTimeSimple() {
+    const now = new Date();
+    const guangzhouOffset = 8 * 60 * 60 * 1000;
+    const guangzhouTime = new Date(now.getTime() + guangzhouOffset);
+    
+    const guangzhouHours = guangzhouTime.getUTCHours();
+    const guangzhouMinutes = guangzhouTime.getUTCMinutes();
+    
+    let nextDrawDay;
+    if (guangzhouHours < 0 || (guangzhouHours === 0 && guangzhouMinutes < 30)) {
+        nextDrawDay = "今天";
+    } else {
+        nextDrawDay = "明天";
+    }
+    
+    nextDrawTimeElement.innerHTML = `
+        <span style="color: #e65100;">下一次开奖: </span>
+        <span style="color: #ff9800; font-weight: bold;">00:30 (GMT+8)</span>
+        <span style="color: #4CAF50; font-weight: bold;"> ${nextDrawDay}</span>
+    `;
+}
+
 
 // ===== HISTORY FUNCTIONS =====
 
