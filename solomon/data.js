@@ -5,85 +5,127 @@
 const lotteryData = {
     // Array of results - MAX 30 ENTRIES
     results: [
+        // 2026
         {
-            date: "2024-01-20",
-            numbers: [7, 2, 9, 4]
+            date: "2026-01-01",
+            numbers: [3, 0, 4, 7]
+        },
+        // Desember 2025
+        {
+            date: "2025-12-31",
+            numbers: [8, 8, 2, 7]
         },
         {
-            date: "2024-01-19",
-            numbers: [1, 8, 3, 6]
+            date: "2025-12-30",
+            numbers: [7, 7, 9, 7]
         },
         {
-            date: "2024-01-18",
-            numbers: [5, 0, 7, 2]
+            date: "2025-12-29",
+            numbers: [1, 7, 3, 1]
         },
         {
-            date: "2024-01-17",
-            numbers: [3, 9, 1, 8]
+            date: "2025-12-28",
+            numbers: [5, 5, 8, 3]
         },
         {
-            date: "2024-01-16",
-            numbers: [4, 2, 6, 0]
+            date: "2025-12-27",
+            numbers: [9, 2, 7, 8]
         },
         {
-            date: "2024-01-15",
-            numbers: [8, 3, 5, 1]
+            date: "2025-12-26",
+            numbers: [9, 8, 7, 0]
         },
         {
-            date: "2024-01-14",
-            numbers: [9, 0, 2, 7]
+            date: "2025-12-25",
+            numbers: [8, 1, 0, 9]
         },
         {
-            date: "2024-01-13",
-            numbers: [6, 1, 4, 9]
+            date: "2025-12-24",
+            numbers: [8, 5, 1, 7]
         },
         {
-            date: "2024-01-12",
-            numbers: [2, 7, 0, 5]
+            date: "2025-12-23",
+            numbers: [5, 0, 4, 2]
         },
         {
-            date: "2024-01-11",
-            numbers: [1, 4, 8, 3]
+            date: "2025-12-22",
+            numbers: [2, 1, 3, 5]
         },
         {
-            date: "2024-01-10",
-            numbers: [5, 9, 2, 6]
+            date: "2025-12-21",
+            numbers: [3, 6, 1, 8]
         },
         {
-            date: "2024-01-09",
-            numbers: [0, 3, 7, 4]
+            date: "2025-12-20",
+            numbers: [5, 4, 2, 6]
         },
         {
-            date: "2024-01-08",
-            numbers: [8, 1, 5, 2]
+            date: "2025-12-19",
+            numbers: [2, 6, 1, 3]
         },
         {
-            date: "2024-01-07",
-            numbers: [3, 6, 9, 0]
+            date: "2025-12-18",
+            numbers: [7, 8, 0, 1]
         },
         {
-            date: "2024-01-06",
-            numbers: [7, 4, 1, 8]
+            date: "2025-12-17",
+            numbers: [9, 7, 2, 4]
         },
         {
-            date: "2024-01-05",
-            numbers: [2, 5, 0, 9]
+            date: "2025-12-16",
+            numbers: [2, 7, 3, 6]
         },
         {
-            date: "2024-01-04",
-            numbers: [4, 8, 3, 7]
+            date: "2025-12-15",
+            numbers: [1, 6, 7, 2]
         },
         {
-            date: "2024-01-03",
-            numbers: [9, 2, 6, 1]
+            date: "2025-12-14",
+            numbers: [3, 9, 6, 5]
         },
         {
-            date: "2024-01-02",
-            numbers: [0, 7, 4, 3]
+            date: "2025-12-13",
+            numbers: [2, 6, 5, 8]
         },
         {
-            date: "2024-01-01",
-            numbers: [5, 1, 8, 2]
+            date: "2025-12-12",
+            numbers: [8, 6, 2, 1]
+        },
+        {
+            date: "2025-12-11",
+            numbers: [4, 3, 6, 7]
+        },
+        {
+            date: "2025-12-10",
+            numbers: [9, 7, 4, 6]
+        },
+        {
+            date: "2025-12-09",
+            numbers: [7, 1, 5, 4]
+        },
+        {
+            date: "2025-12-08",
+            numbers: [7, 0, 6, 9]
+        },
+        {
+            date: "2025-12-07",
+            numbers: [3, 9, 0, 4]
+        },
+        {
+            date: "2025-12-06",
+            numbers: [4, 3, 1, 6]
+        },
+        {
+            date: "2025-12-05",
+            numbers: [2, 5, 0, 3]
+        },
+        {
+            date: "2025-12-04",
+            numbers: [1, 3, 4, 6]
+        },
+        {
+            date: "2025-12-03",
+            numbers: [0, 8, 6, 9]
         }
         // Add new results here at the TOP of the array
         // Format: { date: "YYYY-MM-DD", numbers: [X, X, X, X] }
