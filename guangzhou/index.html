@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广州彩票 - 幸运之轮</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <div class="logo-circle">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <h1>广州彩票</h1>
+                <p class="subtitle">幸运之轮</p>
+            </div>
+            <div class="time-info">
+                <div class="current-time">
+                    <i class="fas fa-clock"></i>
+                    <span id="current-time">正在加载时间...</span>
+                </div>
+                <div class="next-draw">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>下一次开奖: <span id="next-draw-time">16:30 (GMT+8)</span></span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="fortune-wheel-section">
+                <h2><i class="fas fa-yin-yang"></i> 幸运之轮</h2>
+                <div class="wheel-container">
+                    <div class="wheel" id="fortune-wheel">
+                        <div class="wheel-center">
+                            <div class="wheel-center-circle">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                        </div>
+                        <div class="wheel-number" style="--i:1"><span>8</span></div>
+                        <div class="wheel-number" style="--i:2"><span>3</span></div>
+                        <div class="wheel-number" style="--i:3"><span>9</span></div>
+                        <div class="wheel-number" style="--i:4"><span>1</span></div>
+                        <div class="wheel-number" style="--i:5"><span>6</span></div>
+                        <div class="wheel-number" style="--i:6"><span>4</span></div>
+                        <div class="wheel-number" style="--i:7"><span>0</span></div>
+                        <div class="wheel-number" style="--i:8"><span>7</span></div>
+                    </div>
+                    <div class="wheel-controls">
+                        <button id="spin-button" class="spin-button">
+                            <i class="fas fa-redo-alt"></i> 旋转幸运之轮
+                        </button>
+                        <button id="auto-spin-button" class="auto-spin-button">
+                            <i class="fas fa-robot"></i> 自动旋转
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="result-section">
+                    <h3>您的幸运号码</h3>
+                    <div class="result-numbers" id="result-numbers">
+                        <div class="number-placeholder">?</div>
+                        <div class="number-placeholder">?</div>
+                        <div class="number-placeholder">?</div>
+                        <div class="number-placeholder">?</div>
+                    </div>
+                    <p class="result-info">点击"旋转幸运之轮"按钮生成您的幸运号码</p>
+                    
+                    <div class="latest-draw">
+                        <h4><i class="fas fa-trophy"></i> 最新开奖结果</h4>
+                        <div class="latest-numbers" id="latest-numbers">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <p class="draw-time" id="latest-draw-time">开奖时间: --</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="statistics-section">
+                <h2><i class="fas fa-chart-bar"></i> 号码统计</h2>
+                <div class="stats-info">
+                    <p>统计显示历史开奖中最常出现的号码。数据每24小时更新一次。</p>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="frequency-chart">
+                        <h3>号码出现频率</h3>
+                        <div class="chart-bars" id="frequency-chart">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="top-numbers">
+                        <h3>热门号码</h3>
+                        <div class="top-numbers-list" id="top-numbers-list">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        <div class="stats-summary">
+                            <p><i class="fas fa-history"></i> 基于最近 <span id="total-draws">0</span> 次开奖统计</p>
+                            <p><i class="fas fa-sync-alt"></i> 最后更新: <span id="last-update">--</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="info-section">
+                <h2><i class="fas fa-info-circle"></i> 广州彩票信息</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <h3>开奖时间</h3>
+                        <p>广州彩票每天开奖一次，开奖时间为下午4:30 (GMT+8)。</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>游戏规则</h3>
+                        <p>从0-9中随机抽取4个数字组成中奖号码。玩家需要匹配全部4个数字才能赢得头奖。</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>奖项设置</h3>
+                        <p>头奖：匹配4个数字<br>二等奖：匹配3个数字<br>三等奖：匹配2个数字</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-dragon"></i> 广州彩票
+                </div>
+                <p>此应用仅为娱乐目的。参与者必须年满18岁。</p>
+                <p>© 2023 广州彩票 - 所有权利保留</p>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-weixin"></i> 微信</a>
+                    <a href="#"><i class="fas fa-envelope"></i> 联系我们</a>
+                    <a href="#"><i class="fas fa-shield-alt"></i> 隐私政策</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
