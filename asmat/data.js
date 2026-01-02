@@ -11,6 +11,12 @@ const asmatLottoData = {
         
         // January 2026 - Example data
         {
+            date: "2026-01-02",
+            draw: 187,
+            numbers: [9, 4, 7, 7],
+            time: "15:00"
+        },
+        {
             date: "2026-01-01",
             draw: 186,
             numbers: [5, 9, 3, 7],
@@ -177,12 +183,6 @@ const asmatLottoData = {
             date: "2025-12-05",
             draw: 159,
             numbers: [4, 6, 8, 3],
-            time: "15:00"
-        },
-        {
-            date: "2025-12-04",
-            draw: 158,
-            numbers: [2, 7, 9, 1],
             time: "15:00"
         }
         // IMPORTANT: Keep only 30 entries maximum
