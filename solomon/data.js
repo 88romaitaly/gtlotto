@@ -7,7 +7,7 @@ const lotteryData = {
     results: [
         // 2026
         {
-            date: "2026-01-10",
+            date: "2026-01-11",
             numbers: [4, 9, 2, 3]
         },
         {
@@ -126,10 +126,6 @@ const lotteryData = {
         {
             date: "2025-12-13",
             numbers: [2, 6, 5, 8]
-        },
-        {
-            date: "2025-12-12",
-            numbers: [8, 6, 2, 1]
         }
         // Add new results here at the TOP of the array
         // Format: { date: "YYYY-MM-DD", numbers: [X, X, X, X] }
