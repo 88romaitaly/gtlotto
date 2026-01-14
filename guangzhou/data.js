@@ -3,6 +3,7 @@ const guangzhouLottoData = {
     // 历史开奖记录 - Diperbaiki berdasarkan data aktual
     drawHistory: [
         // Data untuk Januari 2026
+        { date: "2026-01-14", numbers: [0, 7, 0, 0] },
         { date: "2026-01-13", numbers: [1, 8, 6, 3] },
         { date: "2026-01-12", numbers: [2, 9, 4, 4] },
         { date: "2026-01-11", numbers: [8, 9, 5, 2] },
