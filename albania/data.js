@@ -7,6 +7,12 @@ const albaniaLottoData = {
     // Array of results - MAX 30 ENTRIES
     results: [
         {
+            date: "2025-01-15",
+            draw: 258,
+            numbers: [5, 1, 1, 6],
+            time: "14:00"
+        }, 
+        {
             date: "2025-01-14",
             draw: 257,
             numbers: [6, 9, 8, 5],
@@ -172,12 +178,6 @@ const albaniaLottoData = {
             date: "2025-12-18",
             draw: 230,
             numbers: [7, 0, 4, 5],
-            time: "14:00"
-        },
-        {
-            date: "2025-12-17",
-            draw: 229,
-            numbers: [2, 9, 1, 6],
             time: "14:00"
         }
         // IMPORTANT: Keep only 30 entries maximum
