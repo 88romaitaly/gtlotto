@@ -12,6 +12,12 @@ const jamaicaLottoData = {
         // January 2026 - Example data
         
         {
+            date: "2026-01-21",
+            draw: 394,
+            numbers: [5, 0, 2, 0],
+            time: "17:00"
+        },
+        {
             date: "2026-01-20",
             draw: 393,
             numbers: [3, 2, 7, 3],
@@ -220,12 +226,6 @@ const jamaicaLottoData = {
             date: "2025-12-17",
             draw: 299,
             numbers: [2, 9, 1, 6],
-            time: "17:00"
-        },
-        {
-            date: "2025-12-16",
-            draw: 298,
-            numbers: [8, 3, 7, 0],
             time: "17:00"
         }
         // IMPORTANT: Keep only 30 entries maximum
