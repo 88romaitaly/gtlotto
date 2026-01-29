@@ -8,8 +8,14 @@ const scotlandLottoData = {
 
         
         {
+            date: "2025-01-29",
+            draw: 259,
+            numbers: [3, 6, 2, 8],
+            time: "11:30"
+        },
+        {
             date: "2025-01-28",
-            draw: 2578,
+            draw: 258,
             numbers: [1, 5, 2, 8],
             time: "11:30"
         },
