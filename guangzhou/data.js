@@ -4,7 +4,7 @@ const guangzhouLottoData = {
     drawHistory: [
         
         // Data untuk Februari 2026
-        { date: "2026-02-20", numbers: [4, 1, 6, 7] },
+        { date: "2026-02-21", numbers: [4, 1, 6, 7] },
         { date: "2026-02-20", numbers: [0, 5, 3, 0] },
         { date: "2026-02-19", numbers: [6, 9, 2, 5] },
         { date: "2026-02-18", numbers: [9, 5, 3, 6] },
