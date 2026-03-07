@@ -8,6 +8,11 @@ const albaniaLottoData = {
     results: [
         
         {
+            date: "2026-03-07",
+            draw: 307,
+            numbers: [5, 0, 6, 2],
+            time: "14:00"
+        },{
             date: "2026-03-06",
             draw: 306,
             numbers: [6, 6, 4, 1],
