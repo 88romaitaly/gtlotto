@@ -10,7 +10,24 @@ const jamaicaLottoData = {
         // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "17:00" }
         
         // January 2026 - Example data
-        
+        {
+            date: "2026-03-16",
+            draw: 448,
+            numbers: [5, 9, 6, 7],
+            time: "17:00"
+        },
+        {
+            date: "2026-03-15",
+            draw: 447,
+            numbers: [4, 5, 6, 2],
+            time: "17:00"
+        },
+        {
+            date: "2026-03-14",
+            draw: 446,
+            numbers: [3, 8, 5, 3],
+            time: "17:00"
+        },
         {
             date: "2026-03-13",
             draw: 445,
@@ -213,18 +230,6 @@ const jamaicaLottoData = {
             date: "2026-02-05",
             draw: 409,
             numbers: [4, 9, 4, 0],
-            time: "17:00"
-        },
-        {
-            date: "2026-02-04",
-            draw: 408,
-            numbers: [5, 9, 7, 6],
-            time: "17:00"
-        },
-        {
-            date: "2026-02-03",
-            draw: 407,
-            numbers: [5, 8, 7, 8],
             time: "17:00"
         }
         // December 2025 - Example continuation
