@@ -7,6 +7,10 @@ const lotteryData = {
     results: [
         // 2026
         {
+            date: "2026-03-17",
+            numbers: [8, 6, 8, 1]
+        },
+        {
             date: "2026-03-16",
             numbers: [8, 4, 0, 1]
         },
@@ -53,61 +57,67 @@ const lotteryData = {
         {
             date: "2026-03-05",
             numbers: [1, 9, 4, 6]
-        },{
+        },
+        {
             date: "2026-03-04",
             numbers: [0, 1, 6, 8]
-        },{
+        },
+        {
             date: "2026-03-03",
             numbers: [8, 4, 2, 2]
-        },{
+        },
+        {
             date: "2026-03-02",
             numbers: [0, 3, 5, 5]
-        },{
+        },
+        {
             date: "2026-03-01",
             numbers: [0, 2, 1, 6]
-        },{
+        },
+        {
             date: "2026-02-28",
             numbers: [2, 2, 5, 0]
-        },{
+        },
+        {
             date: "2026-02-27",
             numbers: [0, 3, 7, 1]
-        },{
+        },
+        {
             date: "2026-02-26",
             numbers: [8, 7, 1, 1]
-        },{
+        },
+        {
             date: "2026-02-25",
             numbers: [6, 6, 6, 7]
-        },{
+        },
+        {
             date: "2026-02-24",
             numbers: [1, 2, 1, 0]
-        },{
+        },
+        {
             date: "2026-02-23",
             numbers: [2, 5, 8, 6]
-        },{
+        },
+        {
             date: "2026-02-22",
             numbers: [5, 5, 9, 0]
-        },{
+        },
+        {
             date: "2026-02-21",
             numbers: [9, 6, 4, 1]
-        },{
+        },
+        {
             date: "2026-02-20",
             numbers: [3, 1, 8, 5]
-        },{
+        },
+        {
             date: "2026-02-19",
             numbers: [7, 9, 7, 1]
-        },{
+        },
+        {
             date: "2026-02-18",
             numbers: [1, 0, 0, 5]
-        },{
-            date: "2026-02-17",
-            numbers: [8, 0, 5, 1]
-        },{
-            date: "2026-02-16",
-            numbers: [2, 5, 8, 7]
-        },{
-            date: "2026-02-15",
-            numbers: [1, 7, 7, 9]
-        }
+        } 
         // Add new results here at the TOP of the array
         // Format: { date: "YYYY-MM-DD", numbers: [X, X, X, X] }
         // IMPORTANT: Keep only 30 entries maximum
