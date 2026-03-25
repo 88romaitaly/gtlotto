@@ -8,6 +8,11 @@ const albaniaLottoData = {
     results: [
         
         {
+            date: "2026-03-25",
+            draw: 325,
+            numbers: [1, 5, 2, 1],
+            time: "14:00"
+        },{
             date: "2026-03-24",
             draw: 324,
             numbers: [8, 3, 1, 2],
@@ -168,12 +173,6 @@ const albaniaLottoData = {
             date: "2026-02-22",
             draw: 295,
             numbers: [7, 7, 1, 4],
-            time: "14:00"
-        },
-        {
-            date: "2026-02-21",
-            draw: 294,
-            numbers: [1, 7, 8, 3],
             time: "14:00"
         }
         // IMPORTANT: Keep only 30 entries maximum
