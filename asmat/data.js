@@ -13,7 +13,7 @@ const asmatLottoData = {
         
         {
             date: "2026-03-26",
-            draw: 268,
+            draw: 269,
             numbers: [1, 6, 3, 7],
             time: "15:00"
         }, 
