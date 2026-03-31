@@ -4,6 +4,7 @@ const guangzhouLottoData = {
     drawHistory: [
         
         // Data untuk Maret 2026
+        { date: "2026-03-31", numbers: [1, 5, 8, 6] },
         { date: "2026-03-30", numbers: [7, 4, 1, 8] },
         { date: "2026-03-29", numbers: [6, 9, 4, 6] },
         { date: "2026-03-28", numbers: [3, 7, 9, 1] },
@@ -64,50 +65,6 @@ const guangzhouLottoData = {
         { date: "2026-02-03", numbers: [8, 6, 7, 8] },
         { date: "2026-02-02", numbers: [8, 9, 0, 5] },
         { date: "2026-02-01", numbers: [3, 4, 1, 2] },
-        
-        // Data untuk Januari 2026
-        { date: "2026-01-31", numbers: [9, 4, 0, 3] },
-        { date: "2026-01-30", numbers: [1, 3, 1, 0] },
-        { date: "2026-01-29", numbers: [1, 7, 9, 2] },
-        { date: "2026-01-28", numbers: [6, 0, 2, 7] },
-        { date: "2026-01-27", numbers: [6, 2, 4, 4] },
-        { date: "2026-01-26", numbers: [2, 6, 8, 8] },
-        { date: "2026-01-25", numbers: [4, 6, 5, 2] },
-        { date: "2026-01-24", numbers: [1, 7, 1, 5] },
-        { date: "2026-01-23", numbers: [7, 8, 4, 9] },
-        { date: "2026-01-22", numbers: [2, 4, 7, 3] },
-        { date: "2026-01-21", numbers: [6, 2, 2, 6] },
-        { date: "2026-01-20", numbers: [0, 9, 2, 2] },
-        { date: "2026-01-19", numbers: [6, 9, 3, 5] },
-        { date: "2026-01-18", numbers: [6, 9, 7, 2] },
-        { date: "2026-01-17", numbers: [8, 8, 9, 7] },
-        { date: "2026-01-16", numbers: [7, 7, 7, 9] },
-        { date: "2026-01-15", numbers: [7, 5, 4, 1] },
-        { date: "2026-01-14", numbers: [0, 7, 0, 0] },
-        { date: "2026-01-13", numbers: [1, 8, 6, 3] },
-        { date: "2026-01-12", numbers: [2, 9, 4, 4] },
-        { date: "2026-01-11", numbers: [8, 9, 5, 2] },
-        { date: "2026-01-10", numbers: [4, 8, 3, 6] },
-        { date: "2026-01-09", numbers: [9, 7, 0, 0] },
-        { date: "2026-01-08", numbers: [5, 8, 4, 1] },
-        { date: "2026-01-07", numbers: [6, 7, 8, 3] },
-        { date: "2026-01-06", numbers: [4, 7, 3, 8] },
-        { date: "2026-01-05", numbers: [7, 0, 4, 1] },
-        { date: "2026-01-04", numbers: [7, 9, 2, 1] },
-        { date: "2026-01-03", numbers: [5, 1, 4, 8] },
-        { date: "2026-01-02", numbers: [1, 9, 1, 3] },
-        { date: "2026-01-01", numbers: [8, 9, 9, 4] },
-        { date: "2025-12-31", numbers: [0, 4, 3, 9] },
-        { date: "2025-12-30", numbers: [5, 4, 7, 7] },
-        { date: "2025-12-29", numbers: [3, 0, 7, 1] },
-        
-        // Data tambahan untuk melengkapi (sebelum 17 Desember)
-        { date: "2025-12-16", numbers: [2, 8, 4, 6] },
-        { date: "2025-12-15", numbers: [1, 3, 7, 9] },
-        { date: "2025-12-14", numbers: [0, 5, 2, 8] },
-        { date: "2025-12-13", numbers: [4, 6, 1, 3] },
-        { date: "2025-12-12", numbers: [7, 9, 0, 5] },
-        { date: "2025-12-11", numbers: [3, 2, 8, 4] },
     ],
     
     // 号码统计 - Akan dihitung otomatis
