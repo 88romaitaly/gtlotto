@@ -9,7 +9,7 @@ const albaniaLottoData = {
 
         {
             date: "2026-04-09",
-            draw: 339,
+            draw: 340,
             numbers: [1, 3, 2, 7],
             time: "14:00"
         }, 
