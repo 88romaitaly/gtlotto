@@ -179,12 +179,7 @@ const scotlandLottoData = {
             draw: 306,
             numbers: [7, 1, 1, 2],
             time: "11:30"
-        },{
-            date: "2026-03-18",
-            draw: 305,
-            numbers: [9, 7, 4, 5],
-            time: "11:30"
-        },
+        }
         // IMPORTANT: Keep only 30 entries maximum
         // Add new results at the TOP, remove from bottom if needed
     ]
