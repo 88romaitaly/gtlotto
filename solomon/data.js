@@ -128,11 +128,7 @@ const lotteryData = {
         {
             date: "2026-03-21",
             numbers: [3, 0, 4, 4]
-        },
-        {
-            date: "2026-03-20",
-            numbers: [0, 2, 5, 1]
-        },    
+        },   
         // Add new results here at the TOP of the array
         // Format: { date: "YYYY-MM-DD", numbers: [X, X, X, X] }
         // IMPORTANT: Keep only 30 entries maximum
