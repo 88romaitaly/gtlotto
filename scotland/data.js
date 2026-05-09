@@ -8,6 +8,24 @@ const scotlandLottoData = {
 
         
         {
+            date: "2026-05-09,
+            draw: 358,
+            numbers: [6, 6, 8,5],
+            time: "11:30"
+        },
+        {
+            date: "2026-05-08,
+            draw: 357,
+            numbers: [9, 1, 2,9],
+            time: "11:30"
+        },
+        {
+            date: "2026-05-07,
+            draw: 356,
+            numbers: [5, 6, 1,2],
+            time: "11:30"
+        },
+        {
             date: "2026-05-06,
             draw: 355,
             numbers: [0, 7, 2,9],
