@@ -8,6 +8,12 @@ const scotlandLottoData = {
 
         
         {
+            date: "2026-05-13,
+            draw: 362,
+            numbers: [5, 8, 3,2],
+            time: "11:30"
+        },
+        {
             date: "2026-05-12,
             draw: 361,
             numbers: [8, 8, 0,6],
@@ -245,78 +251,6 @@ const scotlandLottoData = {
             date: "2026-04-04",
             draw: 322,
             numbers: [4, 6, 2, 1],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-03",
-            draw: 321,
-            numbers: [7, 3, 6, 0],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-02",
-            draw: 320,
-            numbers: [2, 2, 6, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-01",
-            draw: 319,
-            numbers: [6, 3, 3, 9],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-31",
-            draw: 318,
-            numbers: [1, 4, 9, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-30",
-            draw: 317,
-            numbers: [7, 2, 9, 3],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-29",
-            draw: 316,
-            numbers: [0, 2, 5, 9],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-28",
-            draw: 315,
-            numbers: [5, 0, 8, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-27",
-            draw: 314,
-            numbers: [4, 8, 5, 1],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-26",
-            draw: 313,
-            numbers: [4, 1, 6, 2],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-25",
-            draw: 312,
-            numbers: [0, 3, 6, 4],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-24",
-            draw: 311,
-            numbers: [6, 0, 8, 9],
-            time: "11:30"
-        },
-        {
-            date: "2026-03-23",
-            draw: 310,
-            numbers: [4, 2, 0, 3],
             time: "11:30"
         }
         // IMPORTANT: Keep only 30 entries maximum
