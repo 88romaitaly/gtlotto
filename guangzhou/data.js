@@ -4,6 +4,7 @@ const guangzhouLottoData = {
     drawHistory: [
         
         // Data untuk April 2026
+        { date: "2026-05-23", numbers: [0, 6, 1, 4] },
         { date: "2026-05-22", numbers: [5, 9, 3, 9] },
         { date: "2026-05-21", numbers: [2, 7, 3, 2] },
         { date: "2026-05-20", numbers: [2, 3, 6, 0] },
