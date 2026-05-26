@@ -8,239 +8,161 @@ const scotlandLottoData = {
 
         
         {
+            date: "2026-05-26,
+            draw: 374,
+            numbers: [5, 1, 7, 7],
+            time: "11:30"
+        },
+        {
             date: "2026-05-25,
             draw: 373,
-            numbers: [8, 3, 5,5],
+            numbers: [8, 3, 5, 5],
             time: "11:30"
         },
         {
             date: "2026-05-24,
             draw: 372,
-            numbers: [1, 6, 2,7],
+            numbers: [1, 6, 2, 7],
             time: "11:30"
         },
         {
             date: "2026-05-23,
             draw: 371,
-            numbers: [9, 2, 6,6],
+            numbers: [9, 2, 6, 6],
             time: "11:30"
         },
         {
             date: "2026-05-22,
             draw: 370,
-            numbers: [9, 3, 5,5],
+            numbers: [9, 3, 5, 5],
             time: "11:30"
         },
         {
             date: "2026-05-21,
             draw: 369,
-            numbers: [0, 4, 3,7],
+            numbers: [0, 4, 3, 7],
             time: "11:30"
         },
         {
             date: "2026-05-20,
             draw: 368,
-            numbers: [7, 8, 9,7],
+            numbers: [7, 8, 9, 7],
             time: "11:30"
         },
         {
             date: "2026-05-19,
             draw: 367,
-            numbers: [3, 1, 3,6],
+            numbers: [3, 1, 3, 6],
             time: "11:30"
         },
         {
             date: "2026-05-18,
             draw: 366,
-            numbers: [9, 6, 9,3],
+            numbers: [9, 6, 9, 3],
             time: "11:30"
         },
         {
             date: "2026-05-17,
             draw: 365,
-            numbers: [0, 8, 4,4],
+            numbers: [0, 8, 4, 4],
             time: "11:30"
         },
         {
             date: "2026-05-16,
             draw: 364,
-            numbers: [8, 3, 1,6],
+            numbers: [8, 3, 1, 6],
             time: "11:30"
         },
         {
             date: "2026-05-15,
             draw: 363,
-            numbers: [1, 7, 8,3],
+            numbers: [1, 7, 8, 3],
             time: "11:30"
         },
         {
             date: "2026-05-14,
             draw: 363,
-            numbers: [1, 0, 8,3],
+            numbers: [1, 0, 8, 3],
             time: "11:30"
         },
         {
             date: "2026-05-13,
             draw: 362,
-            numbers: [5, 8, 3,2],
+            numbers: [5, 8, 3, 2],
             time: "11:30"
         },
         {
             date: "2026-05-12,
             draw: 361,
-            numbers: [8, 8, 0,6],
+            numbers: [8, 8, 0, 6],
             time: "11:30"
         },
         {
             date: "2026-05-11,
             draw: 360,
-            numbers: [4, 5, 1,8],
+            numbers: [4, 5, 1, 8],
             time: "11:30"
         },
         {
             date: "2026-05-10,
             draw: 359,
-            numbers: [1, 0, 1,2],
+            numbers: [1, 0, 1, 2],
             time: "11:30"
         },
         {
             date: "2026-05-09,
             draw: 358,
-            numbers: [6, 6, 8,5],
+            numbers: [6, 6, 8, 5],
             time: "11:30"
         },
         {
             date: "2026-05-08,
             draw: 357,
-            numbers: [9, 1, 2,9],
+            numbers: [9, 1, 2, 9],
             time: "11:30"
         },
         {
             date: "2026-05-07,
             draw: 356,
-            numbers: [5, 6, 1,2],
+            numbers: [5, 6, 1, 2],
             time: "11:30"
         },
         {
             date: "2026-05-06,
             draw: 355,
-            numbers: [0, 7, 2,9],
+            numbers: [0, 7, 2, 9],
             time: "11:30"
         },
         {
             date: "2026-05-05,
             draw: 354,
-            numbers: [6, 1, 0,6],
+            numbers: [6, 1, 0, 6],
             time: "11:30"
         },
         {
             date: "2026-05-04,
             draw: 353,
-            numbers: [2, 9, 4,4],
+            numbers: [2, 9, 4, 4],
             time: "11:30"
         },
         {
             date: "2026-05-03,
             draw: 352,
-            numbers: [7, 2, 8,1],
+            numbers: [7, 2, 8, 1],
             time: "11:30"
         },
         {
             date: "2026-05-02",
             draw: 351,
-            numbers: [8, 2, 5,6],
+            numbers: [8, 2, 5, 6],
             time: "11:30"
         },
         {
             date: "2026-05-01",
             draw: 350,
-            numbers: [6, 3, 9,8],
+            numbers: [6, 3, 9, 8],
             time: "11:30"
-        },
-        {
-            date: "2026-04-30",
-            draw: 349,
-            numbers: [1, 9, 7,1],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-29",
-            draw: 348,
-            numbers: [9, 4, 2,8],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-28",
-            draw: 347,
-            numbers: [1, 0, 2,4],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-28",
-            draw: 346,
-            numbers: [1, 0, 2,4],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-27",
-            draw: 345,
-            numbers: [8, 0, 3,5],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-26",
-            draw: 344,
-            numbers: [6, 5, 5,2],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-25",
-            draw: 343,
-            numbers: [2, 4, 1,1],
-            time: "11:30"
-        },
-        {
-            date: "2026-04-24",
-            draw: 342,
-            numbers: [8, 5, 4, 0],
-            time: "11:30"
-       },
-        {
-            date: "2026-04-23",
-            draw: 341,
-            numbers: [1, 2, 3, 4],
-            time: "11:30"
-       },
-        {
-            date: "2026-04-22",
-            draw: 340,
-            numbers: [3, 8, 8, 7],
-            time: "11:30"
-       },
-        {
-            date: "2026-04-21",
-            draw: 339,
-            numbers: [9, 9, 2, 2],
-            time: "11:30"
-       },
-        {
-            date: "2026-04-20",
-            draw: 338,
-            numbers: [4, 8, 4, 5],
-            time: "11:30"
-       },
-        {
-            date: "2026-04-19",
-            draw: 337,
-            numbers: [7, 8, 3, 3],
-            time: "11:30"
-       },
-        {
-            date: "2026-04-18",
-            draw: 336,
-            numbers: [0, 1, 5, 7],
-            time: "11:30"
-       }
+        }
         // IMPORTANT: Keep only 30 entries maximum
         // Add new results at the TOP, remove from bottom if needed
     ]
