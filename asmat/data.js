@@ -12,6 +12,12 @@ const asmatLottoData = {
         // January 2026 - Example data
 
         {
+            date: "2026-05-26",
+            draw: 239,
+            numbers: [0, 8, 4, 4],
+            time: "15:00"
+        },
+        {
             date: "2026-05-25",
             draw: 238,
             numbers: [2, 9, 5, 9],
@@ -161,72 +167,6 @@ const asmatLottoData = {
             numbers: [9, 1, 8, 9],
             time: "15:00"
         },
-        {
-            date: "2026-04-30",
-            draw: 304,
-            numbers: [5, 6, 8, 2],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-28",
-            draw: 302,
-            numbers: [3, 5, 9, 8],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-27",
-            draw: 301,
-            numbers: [2, 9, 4, 6],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-26",
-            draw: 300,
-            numbers: [8, 4, 7, 6],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-25",
-            draw: 299,
-            numbers: [1, 2, 9, 3],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-24",
-            draw: 298,
-            numbers: [9, 3, 7, 2],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-23",
-            draw: 297,
-            numbers: [1, 7, 3, 7],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-22",
-            draw: 296,
-            numbers: [2, 2, 6, 9],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-21",
-            draw: 295,
-            numbers: [6, 0, 4, 1],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-20",
-            draw: 294,
-            numbers: [4, 3, 3, 3],
-            time: "15:00"
-        },
-        {
-            date: "2026-04-19",
-            draw: 293,
-            numbers: [1, 9, 2, 0],
-            time: "15:00"
-        }
         // December 2025 - Example continuation
         // IMPORTANT: Keep only 30 entries maximum
         // Add new results at the TOP, remove from bottom if needed
