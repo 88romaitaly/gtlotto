@@ -8,6 +8,12 @@ const albaniaLottoData = {
     results: [
 
         {
+            date: "2026-05-26",
+            draw: 387,
+            numbers: [2, 9, 0, 8],
+            time: "14:00"
+        },
+        {
             date: "2026-05-25",
             draw: 386,
             numbers: [3, 1, 4, 2],
@@ -155,84 +161,6 @@ const albaniaLottoData = {
             date: "2026-05-01",
             draw: 362,
             numbers: [1, 1, 9, 7],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-30",
-            draw: 361,
-            numbers: [9, 1, 8, 5],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-29",
-            draw: 360,
-            numbers: [4, 3, 0, 8],
-            time: "14:00"
-        },   
-        {
-            date: "2026-04-28",
-            draw: 359,
-            numbers: [4, 2, 0, 3],
-            time: "14:00"
-        },
-        {
-            date: "2026-04-27",
-            draw: 358,
-            numbers: [6, 9, 1, 3],
-            time: "14:00"
-        },
-        {
-            date: "2026-04-26",
-            draw: 357,
-            numbers: [1, 3, 5, 7],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-25",
-            draw: 356,
-            numbers: [1, 7, 1, 0],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-24",
-            draw: 355,
-            numbers: [1, 2, 5, 3],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-23",
-            draw: 354,
-            numbers: [8, 9, 3, 4],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-22",
-            draw: 353,
-            numbers: [2, 3, 4, 6],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-21",
-            draw: 352,
-            numbers: [4, 8, 0, 0],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-20",
-            draw: 351,
-            numbers: [7, 1, 8, 1],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-19",
-            draw: 350,
-            numbers: [9, 3, 2, 8],
-            time: "14:00"
-        }, 
-        {
-            date: "2026-04-18",
-            draw: 349,
-            numbers: [2, 1, 8, 9],
             time: "14:00"
         }
         // IMPORTANT: Keep only 30 entries maximum
