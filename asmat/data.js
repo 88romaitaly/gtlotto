@@ -12,6 +12,18 @@ const asmatLottoData = {
         // January 2026 - Example data
 
         {
+            date: "2026-06-02",
+            draw: 246,
+            numbers: [9, 0, 5, 8],
+            time: "15:00"
+        },
+        {
+            date: "2026-06-01",
+            draw: 245,
+            numbers: [6, 1, 0, 1],
+            time: "15:00"
+        },
+        {
             date: "2026-05-31",
             draw: 244,
             numbers: [8, 8, 9, 8],
@@ -45,132 +57,6 @@ const asmatLottoData = {
             date: "2026-05-26",
             draw: 239,
             numbers: [0, 8, 4, 4],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-25",
-            draw: 238,
-            numbers: [2, 9, 5, 9],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-24",
-            draw: 237,
-            numbers: [6, 2, 4, 6],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-23",
-            draw: 236,
-            numbers: [0, 1, 8, 1],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-22",
-            draw: 325,
-            numbers: [6, 3, 2, 1],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-21",
-            draw: 324,
-            numbers: [7, 2, 3, 8],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-20",
-            draw: 323,
-            numbers: [5, 9, 8, 5],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-19",
-            draw: 322,
-            numbers: [4, 7, 1, 0],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-18",
-            draw: 321,
-            numbers: [9, 1, 1, 3],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-17",
-            draw: 320,
-            numbers: [4, 1, 5, 3],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-16",
-            draw: 319,
-            numbers: [3, 4, 4, 1],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-15",
-            draw: 318,
-            numbers: [8, 3, 0, 7],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-14",
-            draw: 317,
-            numbers: [7, 4, 5, 0],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-13",
-            draw: 316,
-            numbers: [9, 1, 6, 0],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-12",
-            draw: 316,
-            numbers: [1, 2, 0, 5],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-11",
-            draw: 315,
-            numbers: [0, 8, 2, 5],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-10",
-            draw: 314,
-            numbers: [5, 1, 8, 6],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-09",
-            draw: 313,
-            numbers: [2, 6, 4, 9],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-08",
-            draw: 312,
-            numbers: [6, 1, 2, 2],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-07",
-            draw: 311,
-            numbers: [2, 7, 9, 6],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-06",
-            draw: 310,
-            numbers: [2, 3, 4, 7],
-            time: "15:00"
-        },
-        {
-            date: "2026-05-05",
-            draw: 309,
-            numbers: [9, 9, 2, 6],
             time: "15:00"
         }
         // December 2025 - Example continuation
