@@ -8,6 +8,12 @@ const albaniaLottoData = {
     results: [
 
         {
+            date: "2026-06-02",
+            draw: 394,
+            numbers: [4, 4, 9, 2],
+            time: "14:00"
+        },
+        {
             date: "2026-06-01",
             draw: 393,
             numbers: [2, 2, 5, 5],
@@ -47,126 +53,6 @@ const albaniaLottoData = {
             date: "2026-05-26",
             draw: 387,
             numbers: [2, 9, 0, 8],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-25",
-            draw: 386,
-            numbers: [3, 1, 4, 2],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-24",
-            draw: 385,
-            numbers: [4, 5, 8, 3],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-23",
-            draw: 384,
-            numbers: [2, 7, 8, 6],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-22",
-            draw: 383,
-            numbers: [1, 3, 7, 2],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-21",
-            draw: 382,
-            numbers: [4, 0, 5, 1],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-20",
-            draw: 381,
-            numbers: [4, 4, 2, 6],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-19",
-            draw: 380,
-            numbers: [4, 1, 7, 8],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-18",
-            draw: 379,
-            numbers: [9, 3, 8, 6],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-17",
-            draw: 378,
-            numbers: [5, 7, 2, 3],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-16",
-            draw: 377,
-            numbers: [6, 0, 1, 9],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-15",
-            draw: 376,
-            numbers: [5, 3, 0, 2],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-14",
-            draw: 375,
-            numbers: [1, 4, 9, 7],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-13",
-            draw: 374,
-            numbers: [7, 2, 4, 7],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-12",
-            draw: 373,
-            numbers: [5, 1, 7, 2],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-11",
-            draw: 372,
-            numbers: [1, 3, 8, 6],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-10",
-            draw: 371,
-            numbers: [2, 6, 6, 1],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-09",
-            draw: 370,
-            numbers: [3, 8, 5, 5],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-08",
-            draw: 369,
-            numbers: [9, 4, 1, 1],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-07",
-            draw: 368,
-            numbers: [, 5, 3, 4],
-            time: "14:00"
-        },
-        {
-            date: "2026-05-06",
-            draw: 367,
-            numbers: [0, 1, 2, 4],
             time: "14:00"
         }
         // IMPORTANT: Keep only 30 entries maximum
