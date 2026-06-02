@@ -8,6 +8,12 @@ const scotlandLottoData = {
 
         
         {
+            date: "2026-06-02,
+            draw: 381,
+            numbers: [4, 1, 4, 0],
+            time: "11:30"
+        },
+        {
             date: "2026-06-01,
             draw: 380,
             numbers: [9, 9, 1, 0],
@@ -47,120 +53,6 @@ const scotlandLottoData = {
             date: "2026-05-26,
             draw: 374,
             numbers: [5, 1, 7, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-25,
-            draw: 373,
-            numbers: [8, 3, 5, 5],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-24,
-            draw: 372,
-            numbers: [1, 6, 2, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-23,
-            draw: 371,
-            numbers: [9, 2, 6, 6],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-22,
-            draw: 370,
-            numbers: [9, 3, 5, 5],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-21,
-            draw: 369,
-            numbers: [0, 4, 3, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-20,
-            draw: 368,
-            numbers: [7, 8, 9, 7],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-19,
-            draw: 367,
-            numbers: [3, 1, 3, 6],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-18,
-            draw: 366,
-            numbers: [9, 6, 9, 3],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-17,
-            draw: 365,
-            numbers: [0, 8, 4, 4],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-16,
-            draw: 364,
-            numbers: [8, 3, 1, 6],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-15,
-            draw: 363,
-            numbers: [1, 7, 8, 3],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-14,
-            draw: 363,
-            numbers: [1, 0, 8, 3],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-13,
-            draw: 362,
-            numbers: [5, 8, 3, 2],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-12,
-            draw: 361,
-            numbers: [8, 8, 0, 6],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-11,
-            draw: 360,
-            numbers: [4, 5, 1, 8],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-10,
-            draw: 359,
-            numbers: [1, 0, 1, 2],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-09,
-            draw: 358,
-            numbers: [6, 6, 8, 5],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-08,
-            draw: 357,
-            numbers: [9, 1, 2, 9],
-            time: "11:30"
-        },
-        {
-            date: "2026-05-07,
-            draw: 356,
-            numbers: [5, 6, 1, 2],
             time: "11:30"
         }
         // IMPORTANT: Keep only 30 entries maximum
