@@ -3,7 +3,7 @@ const guangzhouLottoData = {
     // 历史开奖记录 - Diperbaiki berdasarkan data aktual
     drawHistory: [
         
-        // Data untuk JUNI 2026
+        // Data untuk Juni 2026
         { date: "2026-06-08", numbers: [2, 1, 0, 7] },
         { date: "2026-06-07", numbers: [4, 2, 8, 9] },
         { date: "2026-06-06", numbers: [0, 3, 5, 5] },
@@ -12,6 +12,8 @@ const guangzhouLottoData = {
         { date: "2026-06-03", numbers: [2, 4, 7, 1] },
         { date: "2026-06-02", numbers: [8, 7, 0, 6] },
         { date: "2026-06-01", numbers: [5, 6, 6, 3] },
+        
+        // Data untuk Mei 2026
         { date: "2026-05-31", numbers: [1, 5, 0, 7] },
         { date: "2026-05-30", numbers: [8, 9, 4, 3] },
         { date: "2026-05-29", numbers: [3, 0, 6, 8] },
@@ -43,6 +45,8 @@ const guangzhouLottoData = {
         { date: "2026-05-03", numbers: [5, 2, 9, 3] },
         { date: "2026-05-02", numbers: [4, 1, 7, 8] },
         { date: "2026-05-01", numbers: [8, 6, 7, 8] },
+        
+        // Data untuk April 2026
         { date: "2026-04-30", numbers: [5, 9, 0, 0] },
         { date: "2026-04-29", numbers: [1, 8, 4, 2] },
         { date: "2026-04-28", numbers: [9, 5, 1, 5] },
