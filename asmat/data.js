@@ -12,6 +12,12 @@ const asmatLottoData = {
         // January 2026 - Example data
 
         {
+            date: "2026-06-15",
+            draw: 259,
+            numbers: [8, 2, 8, 0],
+            time: "15:00"
+        },
+        {
             date: "2026-06-14",
             draw: 258,
             numbers: [4, 4, 4, 4],
@@ -63,12 +69,6 @@ const asmatLottoData = {
             date: "2026-06-06",
             draw: 250,
             numbers: [4, 1, 4, 9],
-            time: "15:00"
-        },
-        {
-            date: "2026-06-05",
-            draw: 249,
-            numbers: [3, 5, 3, 7],
             time: "15:00"
         }
         // December 2025 - Example continuation
