@@ -8,55 +8,55 @@ const scotlandLottoData = {
 
         
         {
-            date: "2026-06-18,
+            date: "2026-06-18",
             draw: 397,
             numbers: [1, 3, 9, 7],
             time: "11:30"
         },
         {
-            date: "2026-06-17,
+            date: "2026-06-17",
             draw: 396,
             numbers: [2, 5, 1, 2],
             time: "11:30"
         },
         {
-            date: "2026-06-16,
+            date: "2026-06-16",
             draw: 395,
             numbers: [1, 0, 5, 0],
             time: "11:30"
         },
         {
-            date: "2026-06-15,
+            date: "2026-06-15",
             draw: 394,
             numbers: [6, 6, 0, 7],
             time: "11:30"
         },
         {
-            date: "2026-06-14,
+            date: "2026-06-14",
             draw: 393,
             numbers: [8, 0, 8, 7],
             time: "11:30"
         },
         {
-            date: "2026-06-13,
+            date: "2026-06-13",
             draw: 392,
             numbers: [0, 2, 2, 1],
             time: "11:30"
         },
         {
-            date: "2026-06-12,
+            date: "2026-06-12",
             draw: 391,
             numbers: [9, 6, 9, 7],
             time: "11:30"
         },
         {
-            date: "2026-06-11,
+            date: "2026-06-11",
             draw: 390,
             numbers: [1, 2, 0, 8],
             time: "11:30"
         },
         {
-            date: "2026-06-10,
+            date: "2026-06-10",
             draw: 389,
             numbers: [2, 5, 5, 0],
             time: "11:30"
