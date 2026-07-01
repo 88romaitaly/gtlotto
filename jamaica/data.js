@@ -9,7 +9,13 @@ const jamaicaLottoData = {
         // New entries go at the TOP
         // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "17:00" }
         
-        // Jun 2026 - Example data
+        // Jul 2026 - Example data
+        {
+            date: "2026-07-02",
+            draw: 554,
+            numbers: [3, 8, 6, 2],
+            time: "17:00"
+        },
         {
             date: "2026-07-01",
             draw: 553,
@@ -196,47 +202,6 @@ const jamaicaLottoData = {
             numbers: [9, 7, 0, 8],
             time: "17:00"
         },
-        {
-            date: "2026-05-31",
-            draw: 522,
-            numbers: [8, 1, 4, 6],
-            time: "17:00"
-        },
-        {
-            date: "2026-05-30",
-            draw: 521,
-            numbers: [1, 9, 6, 3],
-            time: "17:00"
-        },
-        {
-            date: "2026-05-29",
-            draw: 520,
-            numbers: [6, 5, 0, 4],
-            time: "17:00"
-        },
-        {
-            date: "2026-05-28",
-            draw: 519,
-            numbers: [3, 1, 2, 9],
-            time: "17:00"
-        },
-        {
-            date: "2026-05-27",
-            draw: 518,
-            numbers: [2, 0, 3, 5],
-            time: "17:00"
-        },
-        {
-            date: "2026-05-26",
-            draw: 517,
-            numbers: [7, 8, 3, 7],
-            time: "17:00"
-        },
-        {
-            date: "2026-05-25",
-            draw: 516,
-            numbers: [2, 4, 6, 7],
-            time: "17:00"
         },
         // December 2025 - Example continuation
         // IMPORTANT: Keep only 30 entries maximum
