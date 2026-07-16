@@ -7,6 +7,10 @@ const lotteryData = {
     results: [
         // 2026
         {
+            date: "2026-07-17",
+            numbers: [3, 6, 2, 0]
+        },
+        {
             date: "2026-07-16",
             numbers: [6, 2, 6, 4]
         },
@@ -178,30 +182,7 @@ const lotteryData = {
             date: "2026-06-04",
             numbers: [0, 6, 8, 6]
         },
-        {
-            date: "2026-06-03",
-            numbers: [4, 7, 7, 9]
-        },
-        {
-            date: "2026-06-02",
-            numbers: [2, 6, 1, 1]
-        },
-        {
-            date: "2026-06-01",
-            numbers: [6, 7, 2, 4]
-        },
-        {
-            date: "2026-05-31",
-            numbers: [5, 6, 4, 2]
-        },
-        {
-            date: "2026-05-30",
-            numbers: [0, 4, 9, 4]
-        },
-        {
-            date: "2026-05-29",
-            numbers: [3, 8, 6, 0]
-        },
+        
         // Add new results here at the TOP of the array
         // Format: { date: "YYYY-MM-DD", numbers: [X, X, X, X] }
         // IMPORTANT: Keep only 30 entries maximum
