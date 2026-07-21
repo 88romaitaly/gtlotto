@@ -7,6 +7,10 @@ const lotteryData = {
     results: [
         // 2026
         {
+            date: "2026-07-22",
+            numbers: [2, 1, 5, 6]
+        },
+        {
             date: "2026-07-21",
             numbers: [4, 5, 9, 7]
         },
