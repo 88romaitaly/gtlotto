@@ -8,6 +8,12 @@ const scotlandLottoData = {
 
         
         {
+            date: "2026-07-23",
+            draw: 432,
+            numbers: [8, 5, 4, 0],
+            time: "11:30"
+        },
+        {
             date: "2026-07-22",
             draw: 431,
             numbers: [1, 2, 8, 3],
@@ -47,12 +53,6 @@ const scotlandLottoData = {
             date: "2026-07-16",
             draw: 425,
             numbers: [9, 9, 9, 5],
-            time: "11:30"
-        },
-        {
-            date: "2026-07-15",
-            draw: 424,
-            numbers: [5, 1, 7, 6],
             time: "11:30"
         }
         // IMPORTANT: Keep only 30 entries maximum
