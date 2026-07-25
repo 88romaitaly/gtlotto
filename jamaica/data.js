@@ -16,13 +16,13 @@ const jamaicaLottoData = {
             draw: 578,
             numbers: [3, 6, 4, 3],
             time: "17:00"
-        }
+        },
         {
             date: "2026-07-25",
             draw: 577,
             numbers: [0, 4, 0, 1],
             time: "17:00"
-        }
+        },
         {
             date: "2026-07-24",
             draw: 576,
