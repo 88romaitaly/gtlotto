@@ -371,42 +371,6 @@ const jamaicaLottoData = {
             numbers: [3, 6, 7, 0],
             time: "17:00"
         },
-        {
-            date: "2026-06-30",
-            draw: 552,
-            numbers: [5, 8, 8, 7],
-            time: "17:00"
-        },
-        {
-            date: "2026-06-29",
-            draw: 551,
-            numbers: [6, 9, 5, 1],
-            time: "17:00"
-        },
-        {
-            date: "2026-06-28",
-            draw: 550,
-            numbers: [4, 2, 3, 1],
-            time: "17:00"
-        },
-        {
-            date: "2026-06-27",
-            draw: 549,
-            numbers: [7, 0, 8, 9],
-            time: "17:00"
-        },
-        {
-            date: "2026-06-26",
-            draw: 548,
-            numbers: [5, 0, 4, 4],
-            time: "17:00"
-        },
-        {
-            date: "2026-06-25",
-            draw: 547,
-            numbers: [2, 8, 3, 6],
-            time: "17:00"
-        },
         
         // December 2025 - Example continuation
         // IMPORTANT: Keep only 30 entries maximum
