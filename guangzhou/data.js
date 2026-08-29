@@ -131,24 +131,6 @@ const guangzhouLottoData = {
         { date: "2026-05-02", numbers: [4, 1, 7, 8] },
         { date: "2026-05-01", numbers: [8, 6, 7, 8] },
         
-        // Data untuk April 2026
-        { date: "2026-04-30", numbers: [5, 9, 0, 0] },
-        { date: "2026-04-29", numbers: [1, 8, 4, 2] },
-        { date: "2026-04-28", numbers: [9, 5, 1, 5] },
-        { date: "2026-04-27", numbers: [5, 3, 6, 1] },
-        { date: "2026-04-26", numbers: [8, 3, 4, 9] },
-        { date: "2026-04-25", numbers: [2, 8, 1, 6] },
-        { date: "2026-04-24", numbers: [4, 7, 6, 2] },
-        { date: "2026-04-23", numbers: [9, 3, 0, 8] },
-        { date: "2026-04-22", numbers: [0, 6, 7, 3] },
-        { date: "2026-04-21", numbers: [8, 5, 4, 2] },
-        { date: "2026-04-20", numbers: [4, 2, 8, 7] },
-        { date: "2026-04-19", numbers: [5, 1, 9, 3] },
-        { date: "2026-04-18", numbers: [3, 0, 1, 1] },
-        { date: "2026-04-17", numbers: [6, 8, 3, 5] },
-        { date: "2026-04-16", numbers: [7, 8, 0, 4] },
-        { date: "2026-04-15", numbers: [2, 3, 4, 4] },
-        
     ],
     
     // 号码统计 - Akan dihitung otomatis
