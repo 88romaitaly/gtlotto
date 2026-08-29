@@ -8,39 +8,39 @@ const lotteryData = {
         // 2026
         {
             date: "2026-08-29",
-            numbers: [0,6, 5, 2]
+            numbers: [0, 6, 5, 2]
         },
         {
             date: "2026-08-28",
-            numbers: [3,6, 9, 7]
+            numbers: [3, 6, 9, 7]
         },
         {
             date: "2026-08-27",
-            numbers: [1,0, 2, 4]
+            numbers: [1, 0, 2, 4]
         },
         {
             date: "2026-08-26",
-            numbers: [5,6, 7, 4]
+            numbers: [5, 6, 7, 4]
         },
         {
             date: "2026-08-25",
-            numbers: [8,3, 9, 5]
+            numbers: [8, 3, 9, 5]
         },
         {
             date: "2026-08-24",
-            numbers: [7,2, 3, 1]
+            numbers: [7, 2, 3, 1]
         },
         {
             date: "2026-08-23",
-            numbers: [1,5, 0, 4]
+            numbers: [1, 5, 0, 4]
         },
         {
             date: "2026-08-22",
-            numbers: [9,3, 4, 6]
+            numbers: [9, 3, 4, 6]
         },
         {
             date: "2026-08-21",
-            numbers: [3,5, 2, 8]
+            numbers: [3, 5, 2, 8]
         },
         {
             date: "2026-08-20",
