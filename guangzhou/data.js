@@ -5,6 +5,7 @@ const guangzhouLottoData = {
         
 
         // Data untuk SEPTEMBER 2026
+        { date: "2026-09-16", numbers: [0, 4, 7, 2] },
         { date: "2026-09-15", numbers: [3, 6, 9, 2] },
         { date: "2026-09-14", numbers: [5, 3, 1, 0] },
         { date: "2026-09-13", numbers: [7, 1, 6, 8] },
@@ -135,22 +136,7 @@ const guangzhouLottoData = {
         { date: "2026-05-19", numbers: [2, 5, 1, 8] },
         { date: "2026-05-18", numbers: [9, 7, 2, 2] },
         { date: "2026-05-17", numbers: [6, 4, 5, 0] },
-        { date: "2026-05-16", numbers: [8, 5, 2, 1] },
-        { date: "2026-05-15", numbers: [2, 0, 8, 4] },
-        { date: "2026-05-14", numbers: [3, 2, 6, 5] },
-        { date: "2026-05-13", numbers: [9, 1, 7, 3] },
-        { date: "2026-05-12", numbers: [2, 7, 0, 9] },
-        { date: "2026-05-11", numbers: [8, 5, 4, 7] },
-        { date: "2026-05-10", numbers: [9, 2, 3, 6] },
-        { date: "2026-05-09", numbers: [1, 3, 8, 4] },
-        { date: "2026-05-08", numbers: [7, 9, 2, 1] },
-        { date: "2026-05-07", numbers: [6, 9, 5, 5] },
-        { date: "2026-05-06", numbers: [2, 5, 0, 4] },
-        { date: "2026-05-05", numbers: [0, 8, 6, 3] },
-        { date: "2026-05-04", numbers: [3, 0, 4, 2] },
-        { date: "2026-05-03", numbers: [5, 2, 9, 3] },
-        { date: "2026-05-02", numbers: [4, 1, 7, 8] },
-        { date: "2026-05-01", numbers: [8, 6, 7, 8] },
+        
         
     ],
     
