@@ -12,6 +12,18 @@ const jamaicaLottoData = {
         // August 2026 - Example data
         
         {
+            date: "2026-10-02",
+            draw: 646,
+            numbers: [2, 3, 4, 2],
+            time: "17:00"
+        },
+        {
+            date: "2026-10-01",
+            draw: 645,
+            numbers: [4, 2, 3, 7],
+            time: "17:00"
+        },
+        {
             date: "2026-09-30",
             draw: 644,
             numbers: [1, 5, 9, 8],
@@ -377,72 +389,7 @@ const jamaicaLottoData = {
             numbers: [3, 9, 0, 5],
             time: "17:00"
         },
-        {
-            date: "2026-07-31",
-            draw: 583,
-            numbers: [6, 7, 0, 8],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-30",
-            draw: 582,
-            numbers: [8, 5, 7, 0],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-29",
-            draw: 581,
-            numbers: [9, 8, 2, 7],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-28",
-            draw: 580,
-            numbers: [5, 9, 4, 5],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-27",
-            draw: 579,
-            numbers: [8, 7, 3, 0],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-26",
-            draw: 578,
-            numbers: [3, 6, 4, 3],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-25",
-            draw: 577,
-            numbers: [0, 4, 0, 1],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-24",
-            draw: 576,
-            numbers: [9, 6, 8, 5],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-23",
-            draw: 575,
-            numbers: [7, 1, 6, 3],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-22",
-            draw: 574,
-            numbers: [0, 8, 2, 4],
-            time: "17:00"
-        },
-        {
-            date: "2026-07-21",
-            draw: 573,
-            numbers: [6, 3, 6, 7],
-            time: "17:00"
-        },
+       
         
         // December 2025 - Example continuation
         // IMPORTANT: Keep only 30 entries maximum
