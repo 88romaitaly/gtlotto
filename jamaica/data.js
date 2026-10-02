@@ -9,8 +9,14 @@ const jamaicaLottoData = {
         // New entries go at the TOP
         // Format: { date: "YYYY-MM-DD", draw: XXX, numbers: [X,X,X,X], time: "17:00" }
         
-        // August 2026 - Example data
+        // Octocber 2026 - Example data
         
+        {
+            date: "2026-10-03",
+            draw: 647,
+            numbers: [0, 6, 7, 3],
+            time: "17:00"
+        },
         {
             date: "2026-10-02",
             draw: 646,
