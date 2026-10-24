@@ -5,6 +5,7 @@ const guangzhouLottoData = {
         
 
         // Data untuk OKTOBER 2026
+        { date: "2026-10-24", numbers: [6, 3, 8, 4] },
         { date: "2026-10-23", numbers: [6, 6, 7, 3] },
         { date: "2026-10-22", numbers: [5, 9, 6, 8] },
         { date: "2026-10-21", numbers: [4, 2, 0, 1] },
