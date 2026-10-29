@@ -13,7 +13,7 @@ const jamaicaLottoData = {
         
         {
             date: "2026-10-30",
-            draw: 673,
+            draw: 674,
             numbers: [6, 9, 8, 1],
             time: "17:00"
         },
