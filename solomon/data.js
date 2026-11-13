@@ -6,6 +6,10 @@ const lotteryData = {
     // Array of results - MAX 30 ENTRIES
     results: [
         // 2026
+        
+            date: "2026-11-14",
+            numbers: [5, 0, 4, 6]
+        },
         {
             date: "2026-11-13",
             numbers: [8, 0, 7, 0]
